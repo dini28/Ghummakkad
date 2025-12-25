@@ -661,6 +661,7 @@ body {
     .travel-sticky {
         height: auto;
         padding: 4rem 2rem;
+        --bg: var(--white);
         background: linear-gradient(to bottom,
                 var(--bg) 0%,
                 var(--bg) 15%,
@@ -683,14 +684,22 @@ body {
         opacity: 1 !important;
     }
 
+    .intro-text h1,
+    .outro-text h1 {
+        color: var(--text-dark);
+    }
+
     .cards-wrapper {
         position: relative;
         opacity: 1 !important;
         flex-direction: column;
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+        margin-top: 4rem;
     }
 
     .sticky-header {
-        position: relative;
+        position: absolute;
         top: 0;
         left: 0;
         transform: none;
@@ -712,7 +721,7 @@ body {
         max-width: 400px;
         margin: 0 auto;
         border-radius: var(--radius-lg) !important;
-        transform: none !important;
+        transform: rotateY(180deg) !important;
     }
 
     #card-1,
@@ -1427,6 +1436,27 @@ body {
         padding: 0.4rem 0.8rem;
         background: var(--white);
         box-shadow: var(--shadow-sm);
+    }
+}
+
+@media (max-width: 768px) {
+    .auth_split_container {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .auth_image_column {
+        height: 250px;
+        flex: none;
+        padding: 1.5rem;
+    }
+
+    .auth_form_column {
+        padding: 2rem 1.5rem;
+    }
+
+    .auth_image_overlay h2 {
+        font-size: 1.5rem;
     }
 }
 
