@@ -1411,10 +1411,23 @@ body {
     transition: var(--transition);
 }
 
+
+
 .auth_back_link:hover {
     color: var(--primary-color);
     background: var(--white);
     box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 768px) {
+    .auth_back_link {
+        top: 1rem;
+        left: 1rem;
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        background: var(--white);
+        box-shadow: var(--shadow-sm);
+    }
 }
 
 /* Hotel Page Specific Styles */
@@ -1740,9 +1753,33 @@ body {
         font-size: 2rem;
     }
 
+    /* Compact Progress Bar for Mobile */
     .booking_progress {
+        display: flex;
+        gap: 0.2rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
+    .step_label {
         display: none;
-        /* Hide complex progress on mobile, or simplify */
+    }
+
+    .progress_line {
+        width: 15px;
+        flex: 0 0 auto;
+        transform: translateY(0);
+        align-self: center;
+    }
+
+    .step_number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .payment_methods_tabs {
+        flex-direction: column;
     }
 
     .availability_container {
