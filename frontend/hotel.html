@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favorite icon -->
+    <link rel="shortcut icon" href="/assets/images/logo.svg" type="image/x-icon">
+
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script src="/assets/js/script.js"></script>
+    <title>Ghummakkad | Book Hotel</title>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="nav">
+            <a href="/index.html" class="nav_logo">
+                <span class="nav_logo-icon">G</span>
+                <span class="nav_logo-text">Ghummakkad<br />
+                    <h6>Book.Travel.Explore.</h6>
+                </span>
+            </a>
+
+            <button class="nav_menu-btn" id="menu-btn" aria-label="Toggle navigation menu">
+                <i class="ri-menu-line"></i>
+            </button>
+
+            <ul class="nav_links" id="nav-links">
+                <li class="nav_item"><a href="/index.html" class="nav_link">Home</a></li>
+                <li class="nav_item"><a href="/about.html" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="/hotel.html" class="nav_link active">Hotels</a></li>
+                <li class="nav_item"><a href="/contact.html" class="nav_link">Contact</a></li>
+                <li class="nav_item" id="login-link"><a href="/login.html" class="nav_link nav_link-icon"><i
+                            class="ri-login-circle-line"></i> Login</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hotel_hero">
+        <div class="section_container">
+            <h1 class="hotel_hero-title">Find Your Perfect Stay</h1>
+            <p class="hotel_hero-subtitle">Experience luxury and heritage in the heart of Rajasthan</p>
+        </div>
+    </section>
+
+    <!-- Booking Wizard Section -->
+    <section class="section_container booking_section">
+
+        <!-- Progress Steps -->
+        <div class="booking_progress">
+            <div class="progress_step active" data-step="1">
+                <span class="step_number">1</span>
+                <span class="step_label">Select City</span>
+            </div>
+            <div class="progress_line"></div>
+            <div class="progress_step" data-step="2">
+                <span class="step_number">2</span>
+                <span class="step_label">Select Hotel</span>
+            </div>
+            <div class="progress_line"></div>
+            <div class="progress_step" data-step="3">
+                <span class="step_number">3</span>
+                <span class="step_label">Check Availability</span>
+            </div>
+            <div class="progress_line"></div>
+            <div class="progress_step" data-step="4">
+                <span class="step_number">4</span>
+                <span class="step_label">Payment</span>
+            </div>
+            <div class="progress_line"></div>
+            <div class="progress_step" data-step="5">
+                <span class="step_number">5</span>
+                <span class="step_label">Confirm</span>
+            </div>
+        </div>
+
+        <!-- Step 1: City Selection -->
+        <div class="booking_step active" id="step-1-city">
+            <h2 class="step_heading">Choose Your Destination</h2>
+            <div class="city_grid" id="city-grid">
+            </div>
+        </div>
+
+        <!-- Step 2: Hotel Selection -->
+        <div class="booking_step hidden" id="step-2-hotel">
+            <div class="step_header-row">
+                <button class="back_btn" onclick="goToStep(1)"><i class="ri-arrow-left-line"></i> Back to
+                    Cities</button>
+                <h2 class="step_heading">Select a Hotel in <span id="selected-city-name"></span></h2>
+            </div>
+            <div class="hotel_grid" id="hotel-grid">
+            </div>
+        </div>
+
+        <!-- Step 3: Availability -->
+        <div class="booking_step hidden" id="step-3-availability">
+            <div class="step_header-row">
+                <button class="back_btn" onclick="goToStep(2)"><i class="ri-arrow-left-line"></i> Back to
+                    Hotels</button>
+                <h2 class="step_heading">Check Availability</h2>
+            </div>
+
+            <div class="availability_container">
+                <div class="selected_hotel_summary">
+                    <img id="summary-hotel-img" src="" alt="Hotel Image">
+                    <div class="summary_details">
+                        <h3 id="summary-hotel-name">Hotel Name</h3>
+                        <p id="summary-hotel-location"><i class="ri-map-pin-line"></i> Location</p>
+                        <p class="summary_price" id="summary-hotel-price">₹0/Night</p>
+                        <div class="summary_rating"><i class="ri-star-fill"></i> 4.8</div>
+                    </div>
+                </div>
+
+                <form class="availability_form" id="availability-form"
+                    onsubmit="event.preventDefault(); checkAvailability();">
+                    <div class="form_group">
+                        <label>Check-in Date</label>
+                        <input type="date" id="checkin-date" required min="">
+                    </div>
+                    <div class="form_group">
+                        <label>Check-out Date</label>
+                        <input type="date" id="checkout-date" required min="">
+                    </div>
+                    <div class="form_row">
+                        <div class="form_group">
+                            <label>Adults</label>
+                            <input type="number" id="adults" value="2" min="1" max="5">
+                        </div>
+                        <div class="form_group">
+                            <label>Children</label>
+                            <input type="number" id="children" value="0" min="0" max="3">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-full">Check Availability</button>
+                    <p class="error_msg" id="availability-error"></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Step 4: Payment -->
+        <div class="booking_step hidden" id="step-4-payment">
+            <div class="step_header-row">
+                <button class="back_btn" onclick="goToStep(3)"><i class="ri-arrow-left-line"></i> Back to
+                    Availability</button>
+                <h2 class="step_heading">Select Payment Method</h2>
+            </div>
+
+            <div class="payment_container">
+                <div class="payment_methods_tabs">
+                    <label class="payment_method_option">
+                        <input type="radio" name="payment_method" value="card" checked
+                            onchange="togglePaymentMethod('card')">
+                        <span class="method_card">
+                            <i class="ri-bank-card-line"></i> Credit/Debit Card
+                        </span>
+                    </label>
+                    <label class="payment_method_option">
+                        <input type="radio" name="payment_method" value="qr" onchange="togglePaymentMethod('qr')">
+                        <span class="method_card">
+                            <i class="ri-qr-code-line"></i> QR Code
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Card Payment Form -->
+                <div id="payment-card" class="payment_content active">
+                    <form class="card_form" onsubmit="event.preventDefault(); processPayment();">
+                        <div class="form_group">
+                            <label>Card Number</label>
+                            <input type="text" placeholder="XXXX XXXX XXXX XXXX" required pattern="\d{16}"
+                                title="16 digit card number">
+                        </div>
+                        <div class="form_row">
+                            <div class="form_group">
+                                <label>Expiry Date</label>
+                                <input type="text" placeholder="MM/YY" required pattern="(0[1-9]|1[0-2])\/\d{2}"
+                                    title="MM/YY format">
+                            </div>
+                            <div class="form_group">
+                                <label>CVV</label>
+                                <input type="password" placeholder="123" required pattern="\d{3}" title="3 digit CVV">
+                            </div>
+                        </div>
+                        <div class="form_group">
+                            <label>Cardholder Name</label>
+                            <input type="text" placeholder="Name on Card" required>
+                        </div>
+                        <button type="submit" class="btn btn-full">Pay Now</button>
+                    </form>
+                    <div class="secure_payment_badge"
+                        style="text-align: center; margin-top: 15px; color: #666; font-size: 0.9rem; display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                        <div style="display: flex; align-items: center; gap: 5px;">
+                            <i class="ri-lock-2-fill" style="color: #27ae60;"></i>
+                            <span>256-Bit SSL Secured Payment</span>
+                        </div>
+                        <div class="payment_logos" style="font-size: 1.5rem; color: #444; display: flex; gap: 10px;">
+                            <i class="ri-visa-line"></i> <i class="ri-mastercard-line"></i> <i
+                                class="ri-paypal-line"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Payment -->
+                <div id="payment-qr" class="payment_content hidden">
+                    <div class="qr_wrapper"
+                        style="border: 2px solid #e0e0e0; border-radius: 12px; padding: 20px; text-align: center; max-width: 300px; margin: 0 auto; background: #fff;">
+                        <div class="qr_brand_header"
+                            style="margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                            <h4 style="margin: 0; color: #333;">Ghummakkad Pay</h4>
+                            <span
+                                style="font-size: 0.8rem; color: #27ae60; display: flex; align-items: center; justify-content: center; gap: 4px;"><i
+                                    class="ri-shield-check-fill"></i> Official Merchant</span>
+                        </div>
+
+                        <div class="qr_code_display"
+                            style="background: #f9f9f9; padding: 10px; display: inline-block; border-radius: 8px;">
+                            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=GhummakkadPayment&color=333"
+                                alt="Payment QR Code" style="display: block;">
+                        </div>
+
+                        <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">Scan with any UPI App<br>
+                            <span style="color: #888; font-size: 0.8rem;">(GPay, PhonePe, Paytm)</span>
+                        </p>
+
+                        <button onclick="processPayment()" class="btn btn-full" style="margin-top: 20px;">I have made
+                            the payment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 5: Confirmation -->
+        <div class="booking_step hidden" id="step-5-confirm">
+            <div class="confirmation_card">
+                <div class="confirm_icon"><i class="ri-checkbox-circle-fill"></i></div>
+                <h2>Booking Confirmed!</h2>
+                <p>Thank you for choosing Ghummakkad. Your stay is booked.</p>
+
+                <div class="booking_details_review">
+                    <div class="detail_item">
+                        <span>Hotel:</span>
+                        <strong id="confirm-hotel"></strong>
+                    </div>
+                    <div class="detail_item">
+                        <span>Dates:</span>
+                        <strong id="confirm-dates"></strong>
+                    </div>
+                    <div class="detail_item">
+                        <span>Guests:</span>
+                        <strong id="confirm-guests"></strong>
+                    </div>
+                    <div class="detail_item total_cost">
+                        <span>Total Cost:</span>
+                        <strong id="confirm-price"></strong>
+                    </div>
+                </div>
+
+                <a href="/index.html" class="btn">Return to Home</a>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="section_container footer_container">
+
+            <div class="footer_col footer_col-brand">
+
+                <a href="#home" class="nav_logo footer_logo">
+                    <span class="nav_logo-icon">G</span>
+                    <div class="nav_logo-text">
+                        Ghummakkad<br />
+                        <h6>Book.Travel.Explore.</h6>
+                    </div>
+                </a>
+
+                <p class="footer_description">
+                    Ram Ram Sa!<br>
+                    A heartfelt welcome to you in our Rajasthan. Your arrival has awakened our fortune. With your
+                    grace,
+                    you've brought light and pride to our land. Welcome, Sir/Madam - our home is blessed by your
+                    presence.
+                </p>
+
+                <ul class="footer_socials">
+                    <li><a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a></li>
+                    <li><a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a></li>
+                    <li><a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a></li>
+                    <li><a href="#" aria-label="X (Twitter)"><i class="ri-twitter-x-line"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="footer_col">
+                <h4 class="footer_heading">Services</h4>
+                <ul class="footer_links">
+                    <li class="footer_item"><a href="#">Train Booking</a></li>
+                    <li class="footer_item"><a href="#">Bus Booking</a></li>
+                    <li class="footer_item"><a href="#">Virtual Tours</a></li>
+                    <li class="footer_item"><a href="#">Customer Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_col">
+                <h4 class="footer_heading">Contact Us</h4>
+                <ul class="footer_contact-info">
+
+                    <li class="contact_item">
+                        <i class="ri-phone-fill contact_icon"></i>
+                        <div class="contact_text-group">
+                            <h5 class="contact_title">Phone Number</h5>
+                            <p class="contact_detail">+91 141 234 5678</p>
+                        </div>
+                    </li>
+
+                    <li class="contact_item">
+                        <i class="ri-mail-send-line contact_icon"></i>
+                        <div class="contact_text-group">
+                            <h5 class="contact_title">Email</h5>
+                            <p class="contact_detail"><a href="mailto:reservations@ghummakkad.com" target="_blank"
+                                    rel="noopener noreferrer">reservations@ghummakkad.com</a></p>
+                        </div>
+                    </li>
+
+                    <li class="contact_item">
+                        <i class="ri-map-pin-2-fill contact_icon"></i>
+                        <div class="contact_text-group">
+                            <h5 class="contact_title">Location</h5>
+                            <p class="contact_detail">
+                                <a href="#" target="_blank">Civil Lines, Jaipur, Rajasthan</a>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer_bar">
+            <p>© 2025 Ghummakkad Yaatri. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

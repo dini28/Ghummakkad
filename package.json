@@ -1,0 +1,32 @@
+{
+  "name": "ghum",
+  "version": "1.0.0",
+  "description": "Ghummakkad is a premium travel booking platform designed to provide an immersive experience for travelers looking to explore the heritage and beauty of Rajasthan, India. The project features a modern, responsive user interface with a complete hotel booking wizard, authentication simulation, and a visually rich design aesthetic.",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dini28/Ghummakkad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/dini28/Ghummakkad/issues"
+  },
+  "homepage": "https://github.com/dini28/Ghummakkad#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "google-auth-library": "^10.5.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.2"
+  }
+}

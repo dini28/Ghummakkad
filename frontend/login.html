@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favorite icon -->
+    <link rel="shortcut icon" href="/assets/images/logo.svg" type="image/x-icon">
+
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <script src="/assets/js/script.js" defer></script>
+    <title>Ghummakkad | Login</title>
+</head>
+
+<body>
+
+    <!-- Back to Home Link -->
+    <a href="/index.html" class="auth_back_link">
+        <i class="ri-arrow-left-line"></i> Back to Home
+    </a>
+
+    <!-- Auth Section -->
+    <section class="auth_section">
+        <div class="auth_split_container">
+            <!-- Left Column: Image -->
+            <div class="auth_image_column">
+                <div class="auth_image_overlay">
+                    <h2>Explore the Unexplored</h2>
+                    <p>Join our community to unlock exclusive deals and personalized travel experiences in Rajasthan.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column: Form -->
+            <div class="auth_form_column">
+                <div class="auth_header">
+                    <h2>Welcome Back</h2>
+                    <p>Plan your next Rajasthani adventure with us.</p>
+                </div>
+
+                <!-- Custom Auth Forms -->
+                <div class="auth_tabs">
+                    <button class="auth_tab active" onclick="switchAuthTab('login')">Login</button>
+                    <button class="auth_tab" onclick="switchAuthTab('register')">Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth_form active">
+                    <div class="form_group">
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form_group">
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                    </div>
+                    <div id="login-error" class="form_error hidden"></div>
+                    <button type="submit" class="btn auth_btn">Login to Account</button>
+                </form>
+
+
+                <!-- Register Form -->
+                <form id="register-form" class="auth_form">
+                    <div class="form_group">
+                        <input type="text" id="register-username" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form_group">
+                        <input type="email" id="register-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form_group">
+                        <input type="password" id="register-password" placeholder="Create a password" required>
+                    </div>
+                    <div id="register-error" class="form_error hidden"></div>
+                    <button type="submit" class="btn auth_btn">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Script loaded from external file -->
+</body>
+
+</html>
