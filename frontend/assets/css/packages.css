@@ -1,6 +1,6 @@
 /* Packages Hero Styles moved to common.css */
 
-/* Packages Grid */
+/* Packages List Grid Layout */
 .packages_grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -103,7 +103,7 @@
     width: 100%;
 }
 
-/* Modal & Timeline */
+/* Itinerary Modal aur Timeline Styling */
 .itinerary_modal {
     position: fixed;
     top: 0;
@@ -200,7 +200,7 @@
 }
 
 
-/* Responsive */
+/* Mobile Responsive Fixes */
 @media (max-width: 992px) {
     .packages_grid {
         grid-template-columns: repeat(2, 1fr);

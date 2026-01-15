@@ -1,10 +1,10 @@
-﻿// Header Logic
+﻿// Header aur Navigation Logic
 document.addEventListener('DOMContentLoaded', function () {
 
     // Page Transition
     document.body.classList.add('loaded');
 
-    // Initialize Lenis for Super Smooth Scroll
+    // Lenis Smooth Scroll Init karna
     if (typeof Lenis !== 'undefined') {
         const lenis = new Lenis({
             duration: 2.0, // Longer duration for momentum
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         requestAnimationFrame(raf);
     }
 
-    // Dynamic Year
+    // Copyright Year ko dynamic banana
     const yearSpan = document.getElementById('copyright-year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Rajasthan Section Logic
+// Rajasthan Sticky Animation Logic
 document.addEventListener("DOMContentLoaded", () => {
     const stickySection = document.getElementById('sticky');
     const introText = document.querySelector('.intro-text');
@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Smooth scroll handling
+    // Scroll Event ko optimize karna (requestAnimationFrame ke sath)
     let ticking = false;
     window.addEventListener('scroll', () => {
         if (!ticking) {
@@ -214,7 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Destination Section Logic
+// Popular Destinations Cards Logic
 document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.destination_card');
     const slideCount = slides.length;
@@ -277,7 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Custom Authentication Logic
+// Login/Register Tab Switching Logic
 function switchAuthTab(tab) {
     const tabs = document.querySelectorAll('.auth_tab');
     const forms = document.querySelectorAll('.auth_form');
@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Hotel Booking Flow Logic
+// Hotel Booking Flow ka poora logic
 const HOTEL_DATA = {
     'udaipur': {
         name: 'Udaipur',
@@ -608,14 +608,14 @@ let currentBookingState = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Only run on hotel page
+    // Sirf Hotel page par chalega (Booking Section check)
     const bookingSection = document.querySelector('.booking_section');
     if (!bookingSection) return;
 
-    // Initialize Step 1
+    // Step 1: Cities load karna
     renderCities();
 
-    // Set min dates
+    // Aaj ki date set karna (Past dates allowed nahi)
     const today = new Date().toISOString().split('T')[0];
     const checkInInput = document.getElementById('checkin-date');
     const checkOutInput = document.getElementById('checkout-date');
@@ -624,25 +624,23 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkOutInput) checkOutInput.min = today;
 });
 
-function renderCities() {
-    const grid = document.getElementById('city-grid');
-    if (!grid) return;
+// Cities ka grid render karna
+if (!grid) return;
 
-    grid.innerHTML = '';
-    Object.keys(HOTEL_DATA).forEach(cityKey => {
-        const city = HOTEL_DATA[cityKey];
-        const card = document.createElement('div');
-        card.className = 'city_select_card';
-        card.onclick = () => selectCity(cityKey);
-        card.innerHTML = `
+grid.innerHTML = '';
+Object.keys(HOTEL_DATA).forEach(cityKey => {
+    const city = HOTEL_DATA[cityKey];
+    const card = document.createElement('div');
+    card.className = 'city_select_card';
+    card.onclick = () => selectCity(cityKey);
+    card.innerHTML = `
             <img src="${city.image}" alt="${city.name}" loading="lazy">
             <div class="city_select_overlay">
                 <h3>${city.name}</h3>
             </div>
         `;
-        grid.appendChild(card);
-    });
-}
+    grid.appendChild(card);
+});
 
 function selectCity(cityId) {
     currentBookingState.cityId = cityId;
@@ -651,23 +649,22 @@ function selectCity(cityId) {
     goToStep(2);
 }
 
-function renderHotels(cityId) {
-    const grid = document.getElementById('hotel-grid');
-    if (!grid) return;
+// Hotels list render karna based on City
+if (!grid) return;
 
-    grid.innerHTML = '';
-    const hotels = HOTEL_DATA[cityId].hotels;
+grid.innerHTML = '';
+const hotels = HOTEL_DATA[cityId].hotels;
 
-    hotels.forEach(hotel => {
-        const card = document.createElement('div');
-        card.className = 'hotel_card'; // Reusing style.css class
+hotels.forEach(hotel => {
+    const card = document.createElement('div');
+    card.className = 'hotel_card'; // Reusing style.css class
 
-        // Generate amenities HTML
-        const amenitiesHtml = hotel.amenities.map(a =>
-            `<span class="amenity_item" title="${a}"><i class="ri-checkbox-circle-line"></i> ${a}</span>`
-        ).join('');
+    // Generate amenities HTML
+    const amenitiesHtml = hotel.amenities.map(a =>
+        `<span class="amenity_item" title="${a}"><i class="ri-checkbox-circle-line"></i> ${a}</span>`
+    ).join('');
 
-        card.innerHTML = `
+    card.innerHTML = `
             <div class="hotel_image-wrapper">
                 <img src="${hotel.image}" alt="${hotel.name}" class="hotel_img" loading="lazy">
                 <div class="hotel_price-badge">
@@ -687,9 +684,8 @@ function renderHotels(cityId) {
                 <button onclick="selectHotel('${hotel.id}')" class="btn hotel_btn" style="width:100%">Select Hotel</button>
             </div>
         `;
-        grid.appendChild(card);
-    });
-}
+    grid.appendChild(card);
+});
 
 function selectHotel(hotelId) {
     const city = HOTEL_DATA[currentBookingState.cityId];
@@ -722,7 +718,7 @@ function checkAvailability() {
         return;
     }
 
-    // Verify Auth (Clerk or Local)
+    // Login Check karna (Auth Verification)
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (!user) {
@@ -769,7 +765,7 @@ async function processPayment() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user) throw new Error("User not found");
 
-        // Calculate total days
+        // Total nights calculate karna
         const start = new Date(currentBookingState.checkIn);
         const end = new Date(currentBookingState.checkOut);
         const nights = Math.ceil((end - start) / (1000 * 60 * 60 * 24));

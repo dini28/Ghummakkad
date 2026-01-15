@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nothing+You+Could+Do&display=swap');
 
-/* Contact Page Specific Styles */
+/* Contact Page ke liye Styles */
 
 /* --- HERO SECTION --- */
-/* Hero styles moved to common.css */
+/* Hero Section (Common style use karega) */
 
-/* --- CONTACT INFO CARDS --- */
+/* --- Contact Info Cards Styling --- */
 .contact_info_container {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -82,7 +82,7 @@
     color: var(--text-light);
 }
 
-/* --- FORM & MAP SPLIT --- */
+/* --- Form aur Map ka Split Layout --- */
 .form_map_container {
     background-color: var(--white);
     padding-bottom: 6rem;
@@ -101,7 +101,7 @@
     }
 }
 
-/* Form Styling */
+/* Form ki Styling Container */
 .contact_form_wrapper {
     padding: 1rem;
 }
@@ -154,7 +154,7 @@
     width: 100%;
 }
 
-/* Map Styling */
+/* Map Display Logic */
 .map_wrapper {
     position: relative;
     height: 100%;
@@ -209,7 +209,7 @@
     color: var(--text-medium);
 }
 
-/* --- FAQ SECTION --- */
+/* --- FAQ Section (Sawaal Jawab) --- */
 .faq_container {
     text-align: center;
 }
@@ -283,7 +283,7 @@
     }
 }
 
-/* --- NEWSLETTER SECTION --- */
+/* --- Newsletter Signup Section --- */
 .newsletter_container {
     border-top: 1px solid var(--border-color);
     text-align: center;

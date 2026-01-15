@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nothing+You+Could+Do&display=swap');
+
+/* Hotel Page ke liye Special CSS */
+
+/* Hotels Container styles moved to common.css */
+
+/* Booking Steps ka Progress Bar */
+.booking_progress {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.progress_step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    z-index: 2;
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.progress_step.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.step_number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--white);
+    border: 2px solid var(--text-medium);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--text-medium);
+    transition: var(--transition);
+}
+
+.progress_step.active .step_number {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+    box-shadow: 0 0 15px rgba(246, 172, 15, 0.4);
+}
+
+.step_label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.progress_line {
+    flex: 1;
+    height: 2px;
+    background-color: var(--border-color);
+    margin: 0 10px;
+    transform: translateY(-14px);
+}
+
+/* Steps ka Container Layout */
+.booking_step {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.booking_step.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step_header-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.back_btn {
+    background: none;
+    border: none;
+    color: var(--text-medium);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: var(--transition);
+}
+
+.back_btn:hover {
+    color: var(--primary-color);
+}
+
+.step_heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    text-align: center;
+    width: 100%;
+}
+
+/* City Selection Grid */
+.city_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.city_select_card {
+    height: 250px;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.city_select_card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.city_select_card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.city_select_card:hover img {
+    transform: scale(1.1);
+}
+
+.city_select_overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    display: flex;
+    align-items: flex-end;
+    padding: 1.5rem;
+}
+
+.city_select_overlay h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* Hotel Listings ka Grid */
+.hotel_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+/* Room Availability Check karne wala section */
+.availability_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.selected_hotel_summary {
+    text-align: center;
+}
+
+.selected_hotel_summary img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: 1rem;
+}
+
+.summary_details h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.summary_price {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+.availability_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form_group input {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.btn-full {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.error_msg {
+    color: var(--error);
+    font-size: 0.9rem;
+    min-height: 1.5rem;
+    text-align: center;
+}
+
+/* Final Booking Confirmation section */
+.confirmation_card {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.confirm_icon {
+    font-size: 5rem;
+    color: var(--success);
+    margin-bottom: 1rem;
+}
+
+.booking_details_review {
+    background: var(--extra-light);
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.detail_item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.8rem;
+}
+
+.detail_item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.total_cost {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .hotel_hero-title {
+        font-size: 2rem;
+    }
+
+    /* Mobile ke liye Compact Progress Bar */
+    .booking_progress {
+        display: flex;
+        gap: 0.2rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+    }
+
+    .step_label {
+        display: none;
+    }
+
+    .progress_line {
+        width: 15px;
+        flex: 0 0 auto;
+        transform: translateY(0);
+        align-self: center;
+    }
+
+    .step_number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .payment_methods_tabs {
+        flex-direction: column;
+    }
+
+    .availability_container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Payment Gateway Styling */
+.payment_container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.payment_methods_tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment_method_option {
+    flex: 1;
+    cursor: pointer;
+}
+
+.payment_method_option input {
+    display: none;
+}
+
+.method_card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--text-medium);
+    transition: var(--transition);
+}
+
+.payment_method_option input:checked+.method_card {
+    border-color: var(--secondary-color);
+    background-color: #fffbeb;
+    color: var(--primary-color);
+}
+
+.card_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.qr_wrapper {
+    text-align: center;
+    padding: 2rem;
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.qr_code_display img {
+    max-width: 200px;
+    margin: 1rem auto;
+}

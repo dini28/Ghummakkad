@@ -1,0 +1,416 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nothing+You+Could+Do&display=swap');
+
+/* Home Page Styling (Design) */
+
+/* Popular Destinations Section Styling */
+.destinations_container {
+    padding: 4rem 1rem;
+    text-align: center;
+    background-color: #fff;
+}
+
+.cards_wrapper {
+    width: 100%;
+    padding-bottom: 50px;
+    margin-top: 1rem;
+    padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.destination_card {
+    width: 300px;
+    height: 420px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+}
+
+.destination_card.is-flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.flip-card-front {
+    background-color: #fff;
+    background-position: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.destination_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.destination_info-overlay {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+}
+
+.info_badge {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #e67e22;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.destination_content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+    color: white;
+    text-align: left;
+}
+
+.flip-card-back {
+    background: #fff;
+    color: #333;
+    transform: rotateY(180deg);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid #eee;
+}
+
+.flip-card-back h4 {
+    color: #e67e22;
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+.back_description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.back_details {
+    width: 100%;
+    background: #fff8f3;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.back_details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+.back_details li {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.back_details li:last-child {
+    margin-bottom: 0;
+}
+
+.back_details i {
+    color: #e67e22;
+}
+
+.destination_link {
+    color: white;
+    background: #e67e22;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.destination_link:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #e67e22 !important;
+}
+
+@media (max-width: 480px) {
+    .destination_card {
+        width: 280px;
+        height: 400px;
+    }
+}
+
+/* Rajasthan Special Section (Sticky Animation) */
+.travel-sticky {
+    position: relative;
+    width: 100%;
+    height: 500vh;
+    background-image: linear-gradient(rgba(15, 26, 44, 0.6),
+            rgba(15, 26, 44, 0.6)), url('/frontend/assets/images/rajasthan.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 0;
+    margin: 0;
+}
+
+.sticky-container {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.intro-text,
+.outro-text {
+    position: absolute;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    opacity: 0;
+    will-change: opacity;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.intro-text h1,
+.outro-text h1 {
+    font-size: clamp(3rem, 6vw, 4rem);
+    font-weight: 500;
+    line-height: 1;
+    color: var(--extra-light);
+}
+
+.cards-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    will-change: opacity;
+}
+
+.sticky-header {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 800px;
+    z-index: 10;
+    opacity: 0;
+    will-change: transform, opacity;
+    color: var(--white);
+}
+
+.sticky-header h2 {
+    text-align: center;
+    font-size: clamp(2rem, 3vw, 2rem);
+}
+
+.card-container {
+    position: relative;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(75% - (15% * var(--card-progress)));
+    gap: calc(30px * max(0, (var(--card-progress) - 0.4) / 0.2));
+    perspective: 1000px;
+    will-change: transform;
+}
+
+.flip-card {
+    position: relative;
+    flex: 1;
+    aspect-ratio: 5 / 7;
+    transform-style: preserve-3d;
+    overflow: visible;
+    will-change: transform;
+    transition: border-radius 0.6s ease;
+}
+
+#card-1 {
+    border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+#card-2 {
+    border-radius: 0;
+}
+
+#card-3 {
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: inherit;
+    overflow: hidden;
+}
+
+.card-back {
+    background-color: #0f1a2c;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: rotateY(180deg);
+    padding: 3rem 2rem;
+    color: var(--white);
+}
+
+.card-back h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.card-back p {
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    line-height: 1.4;
+    opacity: 0.8;
+    margin-top: 1rem;
+}
+
+.card-back span {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    opacity: 0.4;
+    font-size: 2rem;
+}
+
+#card-1 .card-back {
+    background: linear-gradient(165deg, var(--secondary-color) 0%, #f7d14d 100%);
+    color: var(--primary-color);
+}
+
+#card-2 .card-back {
+    background: linear-gradient(177deg, var(--primary-color) -18%, #1e293b 100%);
+    z-index: 100;
+}
+
+#card-3 .card-back {
+    background: linear-gradient(var(--secondary-color) 0%, #d49a0c 100%);
+    color: var(--primary-color);
+}
+
+@media (max-width: 999px) {
+    .travel-sticky {
+        height: auto;
+        padding: 4rem 2rem;
+        --bg: var(--white);
+        background: linear-gradient(to bottom,
+                var(--bg) 0%,
+                var(--bg) 15%,
+                var(--primary-color) 15%,
+                var(--primary-color) 85%,
+                var(--bg) 85%,
+                var(--bg) 100%);
+    }
+
+    .sticky-container {
+        position: relative;
+        height: auto;
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .intro-text,
+    .outro-text {
+        position: relative;
+        opacity: 1 !important;
+    }
+
+    .intro-text h1,
+    .outro-text h1 {
+        color: var(--text-dark);
+    }
+
+    .cards-wrapper {
+        position: relative;
+        opacity: 1 !important;
+        flex-direction: column;
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+        margin-top: 4rem;
+    }
+
+    .sticky-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: none;
+        margin-bottom: 4rem;
+        width: 100%;
+        max-width: none;
+        opacity: 1 !important;
+    }
+
+    .card-container {
+        width: 100%;
+        flex-direction: column;
+        gap: 2rem !important;
+        max-width: 400px;
+    }
+
+    .flip-card {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: var(--radius-lg) !important;
+        transform: rotateY(180deg) !important;
+    }
+
+    #card-1,
+    #card-2,
+    #card-3 {
+        border-radius: var(--radius-lg) !important;
+    }
+}
