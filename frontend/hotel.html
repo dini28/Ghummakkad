@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- favorite icon -->
-    <link rel="shortcut icon" href="/assets/images/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/frontend/assets/images/logo.svg" type="image/x-icon">
 
-    <link rel="icon" href="favicon.png" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <script src="/assets/js/script.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="/frontend/assets/css/common.css" />
+    <link rel="stylesheet" href="/frontend/assets/css/style.css" />
+    <script src="/frontend/assets/js/script.js"></script>
     <title>Ghummakkad | Book Hotel</title>
 </head>
 
@@ -22,8 +23,8 @@
     <!-- Header Section -->
     <header class="header">
         <div class="nav">
-            <a href="/index.html" class="nav_logo">
-                <span class="nav_logo-icon">G</span>
+            <a href="/frontend/index.html" class="nav_logo">
+                <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
                 <span class="nav_logo-text">Ghummakkad<br />
                     <h6>Book.Travel.Explore.</h6>
                 </span>
@@ -34,21 +35,63 @@
             </button>
 
             <ul class="nav_links" id="nav-links">
-                <li class="nav_item"><a href="/index.html" class="nav_link">Home</a></li>
-                <li class="nav_item"><a href="/about.html" class="nav_link">About</a></li>
-                <li class="nav_item"><a href="/hotel.html" class="nav_link active">Hotels</a></li>
-                <li class="nav_item"><a href="/contact.html" class="nav_link">Contact</a></li>
-                <li class="nav_item" id="login-link"><a href="/login.html" class="nav_link nav_link-icon"><i
+                <li class="nav_item"><a href="/frontend/index.html" class="nav_link">Home</a></li>
+                <li class="nav_item"><a href="/frontend/about.html" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="/frontend/packages.html" class="nav_link">Packages</a></li>
+                <li class="nav_item"><a href="/frontend/hotel.html" class="nav_link active">Hotels</a></li>
+                <li class="nav_item"><a href="/frontend/contact.html" class="nav_link">Contact</a></li>
+                <li class="nav_item" id="login-link"><a href="/frontend/login.html" class="nav_link nav_link-icon"><i
                             class="ri-login-circle-line"></i> Login</a></li>
             </ul>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hotel_hero">
+    <section class="hero hero_hotel">
         <div class="section_container">
-            <h1 class="hotel_hero-title">Find Your Perfect Stay</h1>
-            <p class="hotel_hero-subtitle">Experience luxury and heritage in the heart of Rajasthan</p>
+            <h1 class="hero_heading">Find Your Perfect Stay</h1>
+            <p class="hero_description">Experience luxury and heritage in the heart of Rajasthan</p>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <!-- Trust Badges Section -->
+    <section class="trust_section">
+        <div class="trust_container">
+            <div class="trust_grid">
+                <!-- Trust Item 1 -->
+                <div class="trust_item">
+                    <div class="trust_icon-box">
+                        <i class="ri-shield-check-fill"></i>
+                    </div>
+                    <div class="trust_content">
+                        <h5 class="trust_title">Verified Hosts</h5>
+                        <p class="trust_desc">Background checked stays</p>
+                    </div>
+                </div>
+
+                <!-- Trust Item 2 -->
+                <div class="trust_item">
+                    <div class="trust_icon-box">
+                        <i class="ri-lock-password-fill"></i>
+                    </div>
+                    <div class="trust_content">
+                        <h5 class="trust_title">Secure Booking</h5>
+                        <p class="trust_desc">256-bit SSL Protection</p>
+                    </div>
+                </div>
+
+                <!-- Trust Item 3 -->
+                <div class="trust_item">
+                    <div class="trust_icon-box">
+                        <i class="ri-customer-service-2-fill"></i>
+                    </div>
+                    <div class="trust_content">
+                        <h5 class="trust_title">24/7 Support</h5>
+                        <p class="trust_desc">Whenever you need us</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -264,7 +307,7 @@
                     </div>
                 </div>
 
-                <a href="/index.html" class="btn">Return to Home</a>
+                <a href="/frontend/index.html" class="btn">Return to Home</a>
             </div>
         </div>
 
@@ -276,8 +319,8 @@
 
             <div class="footer_col footer_col-brand">
 
-                <a href="#home" class="nav_logo footer_logo">
-                    <span class="nav_logo-icon">G</span>
+                <a href="/frontend/index.html#home" class="nav_logo footer_logo">
+                    <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
                     <div class="nav_logo-text">
                         Ghummakkad<br />
                         <h6>Book.Travel.Explore.</h6>
@@ -345,7 +388,13 @@
         </div>
 
         <div class="footer_bar">
-            <p>© 2025 Ghummakkad Yaatri. All rights reserved.</p>
+            <p>© <span id="copyright-year">2025</span> Ghummakkad Yaatri. All rights reserved.</p>
+            <div class="payment_icons">
+                <i class="ri-visa-line"></i>
+                <i class="ri-mastercard-line"></i>
+                <i class="ri-paypal-line"></i>
+                <i class="ri-bank-card-line"></i>
+            </div>
         </div>
     </footer>
 

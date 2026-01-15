@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favorite icon -->
+    <link rel="shortcut icon" href="/frontend/assets/images/logo.svg" type="image/x-icon">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="/frontend/assets/css/common.css" />
+    <link rel="stylesheet" href="/frontend/assets/css/style.css" />
+    <link rel="stylesheet" href="/frontend/assets/css/packages.css" />
+    <script src="/frontend/assets/js/script.js" defer></script>
+    <title>Ghummakkad | Trip Packages</title>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="nav">
+            <a href="/frontend/index.html" class="nav_logo">
+                <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
+                <span class="nav_logo-text">Ghummakkad<br />
+                    <h6>Book.Travel.Explore.</h6>
+                </span>
+            </a>
+
+            <button class="nav_menu-btn" id="menu-btn" aria-label="Toggle navigation menu">
+                <i class="ri-menu-line"></i>
+            </button>
+
+            <ul class="nav_links" id="nav-links">
+                <li class="nav_item"><a href="/frontend/index.html" class="nav_link">Home</a></li>
+                <li class="nav_item"><a href="/frontend/about.html" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="/frontend/packages.html" class="nav_link active">Packages</a></li>
+                <li class="nav_item"><a href="/frontend/hotel.html" class="nav_link">Hotels</a></li>
+                <li class="nav_item"><a href="/frontend/contact.html" class="nav_link">Contact</a></li>
+                <li class="nav_item" id="login-link"><a href="/frontend/login.html" class="nav_link nav_link-icon"><i
+                            class="ri-login-circle-line"></i> Login</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Packages Hero -->
+    <section class="hero hero_packages">
+        <div class="section_container">
+            <h1 class="hero_heading">Curated Royal Journeys</h1>
+            <p class="hero_description">Handcrafted itineraries designed to immerse you in the magic of Rajasthan.</p>
+        </div>
+    </section>
+
+    <!-- Packages Filter/Grid -->
+    <section class="section_container packages_container">
+        <div class="section_header_center">
+            <p class="section_subheader">Choose Your Adventure</p>
+            <h2 class="section_header">Popular Trip Plans</h2>
+        </div>
+
+        <div class="packages_grid">
+            <!-- Package 1: Royal Rajasthan (7 Days) -->
+            <div class="package_card">
+                <div class="package_image">
+                    <img src="/frontend/assets/images/Place/jaipur.jpg" alt="Jaipur Palace"
+                        onerror="this.src='/frontend/assets/images/hero.jpg'" loading="lazy">
+                    <div class="package_badge">Best Seller</div>
+                </div>
+                <div class="package_content">
+                    <div class="package_meta">
+                        <span><i class="ri-time-line"></i> 7 Days / 6 Nights</span>
+                        <span><i class="ri-user-line"></i> Family</span>
+                    </div>
+                    <h3 class="package_title">The Royal Rajasthan Tour</h3>
+                    <p class="package_desc">Complete circuit covering Jaipur, Jodhpur, and Udaipur. Experience forts,
+                        lakes, and desert safaris.</p>
+                    <div class="package_price">
+                        <span class="price_label">Starting from</span>
+                        <span class="price_value">₹35,000<small>/person</small></span>
+                    </div>
+                    <button class="btn package_btn" onclick="toggleItinerary('itinerary-1')">View Itinerary</button>
+                </div>
+            </div>
+
+            <!-- Package 2: Desert Mystique (4 Days) -->
+            <div class="package_card">
+                <div class="package_image">
+                    <img src="/frontend/assets/images/Destination/jaisalmer_fort.webp" alt="Desert Camel"
+                        onerror="this.src='/frontend/assets/images/hero.jpg'" loading="lazy">
+                </div>
+                <div class="package_content">
+                    <div class="package_meta">
+                        <span><i class="ri-time-line"></i> 4 Days / 3 Nights</span>
+                        <span><i class="ri-sun-line"></i> Adventure</span>
+                    </div>
+                    <h3 class="package_title">Desert Mystique Safari</h3>
+                    <p class="package_desc">Explore the Golden City of Jaisalmer, sleep under the stars in dunes, and
+                        enjoy folk culture.</p>
+                    <div class="package_price">
+                        <span class="price_label">Starting from</span>
+                        <span class="price_value">₹18,500<small>/person</small></span>
+                    </div>
+                    <button class="btn package_btn" onclick="toggleItinerary('itinerary-2')">View Itinerary</button>
+                </div>
+            </div>
+
+            <!-- Package 3: Lake City Romance (3 Days) -->
+            <div class="package_card">
+                <div class="package_image">
+                    <img src="/frontend/assets/images/Destination/lake_pichola.webp" alt="Udaipur Lake"
+                        onerror="this.src='/frontend/assets/images/hero.jpg'" loading="lazy">
+                    <div class="package_badge">Honeymoon</div>
+                </div>
+                <div class="package_content">
+                    <div class="package_meta">
+                        <span><i class="ri-time-line"></i> 3 Days / 2 Nights</span>
+                        <span><i class="ri-heart-line"></i> Romantic</span>
+                    </div>
+                    <h3 class="package_title">Lake City Romance</h3>
+                    <p class="package_desc">A relaxed getaway in Udaipur with boat rides, palace dinners, and sunset
+                        views.</p>
+                    <div class="package_price">
+                        <span class="price_label">Starting from</span>
+                        <span class="price_value">₹12,000<small>/person</small></span>
+                    </div>
+                    <button class="btn package_btn" onclick="toggleItinerary('itinerary-3')">View Itinerary</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Itinerary Details (Hidden by default, toggled via JS) -->
+
+        <!-- Itinerary 1: Royal Rajasthan -->
+        <div id="itinerary-1" class="itinerary_modal hidden">
+            <div class="itinerary_content">
+                <span class="close_itinerary" onclick="toggleItinerary('itinerary-1')">&times;</span>
+                <h3>The Royal Rajasthan Tour - 7 Days</h3>
+                <div class="timeline">
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 1</div>
+                        <div class="timeline_info">
+                            <h4>Arrival in Jaipur</h4>
+                            <p>Pickup from airport. Check-in to heritage hotel. Evening visit to Chokhi Dhani for
+                                traditional dinner.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 2</div>
+                        <div class="timeline_info">
+                            <h4>Jaipur Sightseeing</h4>
+                            <p>Visit Amber Fort, City Palace, Hawa Mahal, and Jantar Mantar. Shopping in Johari Bazaar.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 3</div>
+                        <div class="timeline_info">
+                            <h4>Jaipur to Jodhpur</h4>
+                            <p>Drive to Jodhpur (5 hrs). Visit Pushkar Brahma Temple on the way. Check-in at Jodhpur.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 4</div>
+                        <div class="timeline_info">
+                            <h4>Blue City Exploration</h4>
+                            <p>Morning tour of Mehrangarh Fort and Jaswant Thada. Evening walk near Clock Tower market.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 5</div>
+                        <div class="timeline_info">
+                            <h4>Jodhpur to Udaipur</h4>
+                            <p>Drive to Udaipur via Ranakpur Jain Temples using the scenic route. Evening boat ride on
+                                Lake Pichola.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 6</div>
+                        <div class="timeline_info">
+                            <h4>City of Lakes Tour</h4>
+                            <p>City Palace, Jagdish Temple, Saheliyon ki Bari, and Vintage Car Museum.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 7</div>
+                        <div class="timeline_info">
+                            <h4>Departure</h4>
+                            <p>Breakfast and transfer to Udaipur Airport for your onward journey.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-full">Book This Plan</button>
+            </div>
+        </div>
+
+        <!-- Itinerary 2: Desert Mystique -->
+        <div id="itinerary-2" class="itinerary_modal hidden">
+            <div class="itinerary_content">
+                <span class="close_itinerary" onclick="toggleItinerary('itinerary-2')">&times;</span>
+                <h3>Desert Mystique Safari - 4 Days</h3>
+                <div class="timeline">
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 1</div>
+                        <div class="timeline_info">
+                            <h4>Arrival in Jaisalmer</h4>
+                            <p>Transfer to hotel. Evening visit to Gadisar Lake and local markets.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 2</div>
+                        <div class="timeline_info">
+                            <h4>The Golden Fort</h4>
+                            <p>Explore Jaisalmer Fort (Sonar Quila), Patwon Ki Haveli, and Jain Temples.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 3</div>
+                        <div class="timeline_info">
+                            <h4>Sam Sand Dunes</h4>
+                            <p>Drive to Sam Dunes. Camel safari at sunset. Cultural folk dance and dinner at desert
+                                camp.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 4</div>
+                        <div class="timeline_info">
+                            <h4>Departure</h4>
+                            <p>Check-out from camp and transfer to Jaisalmer Railway Station/Airport.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-full">Book This Plan</button>
+            </div>
+        </div>
+
+        <!-- Itinerary 3: Lake City Romance -->
+        <div id="itinerary-3" class="itinerary_modal hidden">
+            <div class="itinerary_content">
+                <span class="close_itinerary" onclick="toggleItinerary('itinerary-3')">&times;</span>
+                <h3>Lake City Romance - 3 Days</h3>
+                <div class="timeline">
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 1</div>
+                        <div class="timeline_info">
+                            <h4>Arrival & Lake View</h4>
+                            <p>Welcome to Udaipur. Check-in to a lake-view room. Candlelight dinner at Ambrai Ghat.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 2</div>
+                        <div class="timeline_info">
+                            <h4>Royal Heritage</h4>
+                            <p>Private tour of City Palace. Visit Monsoon Palace for sunset views.</p>
+                        </div>
+                    </div>
+                    <div class="timeline_item">
+                        <div class="timeline_day">Day 3</div>
+                        <div class="timeline_info">
+                            <h4>Departure</h4>
+                            <p>Leisurely breakfast and shopping for handicrafts before departure.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-full">Book This Plan</button>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="section_container footer_container">
+
+            <div class="footer_col footer_col-brand">
+
+                <a href="/frontend/index.html#home" class="nav_logo footer_logo">
+                    <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
+                    <div class="nav_logo-text">
+                        Ghummakkad<br />
+                        <h6>Book.Travel.Explore.</h6>
+                    </div>
+                </a>
+
+                <p class="footer_description">
+                    Ram Ram Sa!<br>
+                    A heartfelt welcome to you in our Rajasthan. Your arrival has awakened our fortune. With your
+                    grace,
+                    you've brought light and pride to our land. Welcome, Sir/Madam - our home is blessed by your
+                    presence.
+                </p>
+
+                <ul class="footer_socials">
+                    <li><a href="#" aria-label="YouTube"><i class="ri-youtube-fill"></i></a></li>
+                    <li><a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a></li>
+                    <li><a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a></li>
+                    <li><a href="#" aria-label="X (Twitter)"><i class="ri-twitter-x-line"></i></a></li>
+                </ul>
+            </div>
+
+            <div class="footer_col">
+                <h4 class="footer_heading">Services</h4>
+                <ul class="footer_links">
+                    <li class="footer_item"><a href="#">Train Booking</a></li>
+                    <li class="footer_item"><a href="#">Bus Booking</a></li>
+                    <li class="footer_item"><a href="#">Virtual Tours</a></li>
+                    <li class="footer_item"><a href="#">Customer Support</a></li>
+                </ul>
+            </div>
+
+            <div class="footer_col">
+                <h4 class="footer_heading">Contact Us</h4>
+                <ul class="footer_contact-info">
+
+                    <li class="contact_item">
+                        <i class="ri-phone-fill contact_icon"></i>
+                        <div class="contact_text-group">
+                            <h5 class="contact_title">Phone Number</h5>
+                            <p class="contact_detail">+91 141 234 5678</p>
+                        </div>
+                    </li>
+
+                    <li class="contact_item">
+                        <i class="ri-mail-send-line contact_icon"></i>
+                        <div class="contact_text-group">
+                            <h5 class="contact_title">Email</h5>
+                            <p class="contact_detail"><a href="mailto:reservations@ghummakkad.com" target="_blank"
+                                    rel="noopener noreferrer">reservations@ghummakkad.com</a></p>
+                        </div>
+                    </li>
+
+                    <li class="contact_item">
+                        <i class="ri-map-pin-2-fill contact_icon"></i>
+                        <div class="contact_text-group">
+                            <h5 class="contact_title">Location</h5>
+                            <p class="contact_detail">
+                                <a href="#" target="_blank">Civil Lines, Jaipur, Rajasthan</a>
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer_bar">
+            <p>© <span id="copyright-year">2025</span> Ghummakkad Yaatri. All rights reserved.</p>
+            <div class="payment_icons">
+                <i class="ri-visa-line"></i>
+                <i class="ri-mastercard-line"></i>
+                <i class="ri-paypal-line"></i>
+                <i class="ri-bank-card-line"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleItinerary(id) {
+            const modal = document.getElementById(id);
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            } else {
+                modal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

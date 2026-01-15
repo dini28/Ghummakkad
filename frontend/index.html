@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- favorite icon -->
-    <link rel="shortcut icon" href="/assets/images/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/frontend/assets/images/logo.svg" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <script src="/assets/js/script.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="/frontend/assets/css/common.css" />
+    <link rel="stylesheet" href="/frontend/assets/css/style.css" />
+    <script src="/frontend/assets/js/script.js"></script>
     <title>Ghummakkad | Home</title>
 </head>
 
@@ -22,8 +24,8 @@
     <header class="header">
         <div class="nav">
 
-            <a href="/index.html" class="nav_logo">
-                <img src="/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
+            <a href="/frontend/index.html" class="nav_logo">
+                <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
                 <span class="nav_logo-text">Ghummakkad<br />
                     <h6>Book.Travel.Explore.</h6>
                 </span>
@@ -34,11 +36,12 @@
             </button>
 
             <ul class="nav_links" id="nav-links">
-                <li class="nav_item"><a href="/index.html" class="nav_link active">Home</a></li>
-                <li class="nav_item"><a href="/about.html" class="nav_link">About</a></li>
-                <li class="nav_item"><a href="/hotel.html" class="nav_link">Hotels</a></li>
-                <li class="nav_item"><a href="/contact.html" class="nav_link">Contact</a></li>
-                <li class="nav_item" id="login-link"><a href="/login.html" class="nav_link nav_link-icon"><i
+                <li class="nav_item"><a href="/frontend/index.html" class="nav_link active">Home</a></li>
+                <li class="nav_item"><a href="/frontend/about.html" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="/frontend/packages.html" class="nav_link">Packages</a></li>
+                <li class="nav_item"><a href="/frontend/hotel.html" class="nav_link">Hotels</a></li>
+                <li class="nav_item"><a href="/frontend/contact.html" class="nav_link">Contact</a></li>
+                <li class="nav_item" id="login-link"><a href="/frontend/login.html" class="nav_link nav_link-icon"><i
                             class="ri-login-circle-line"></i>
                         Login</a></li>
             </ul>
@@ -47,7 +50,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero hero_home" id="home">
         <div class="section_container header_container">
 
             <p class="section_subheader hero_tagline">Padharo Mhare Desh! <br>
@@ -59,6 +62,47 @@
             </h3>
 
             <a href="#"><button class="hero_btn">Book Now</button></a>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <!-- Trust Badges Section -->
+    <section class="trust_section">
+        <div class="trust_container">
+            <div class="trust_grid">
+                <!-- Trust Item 1 -->
+                <div class="trust_item">
+                    <div class="trust_icon-box">
+                        <i class="ri-government-fill"></i>
+                    </div>
+                    <div class="trust_content">
+                        <h5 class="trust_title">Govt. Registered</h5>
+                        <p class="trust_desc">Recognized Tour Operator</p>
+                    </div>
+                </div>
+
+                <!-- Trust Item 2 -->
+                <div class="trust_item">
+                    <div class="trust_icon-box">
+                        <i class="ri-star-smile-fill"></i>
+                    </div>
+                    <div class="trust_content">
+                        <h5 class="trust_title">4.9/5 Rating</h5>
+                        <p class="trust_desc">Based on 10k+ reviews</p>
+                    </div>
+                </div>
+
+                <!-- Trust Item 3 -->
+                <div class="trust_item">
+                    <div class="trust_icon-box">
+                        <i class="ri-secure-payment-fill"></i>
+                    </div>
+                    <div class="trust_content">
+                        <h5 class="trust_title">100% Secure</h5>
+                        <p class="trust_desc">Safe & encrypted payments</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -78,8 +122,8 @@
                                     <i class="ri-star-fill"></i> <span>Must Visit</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/hawa_mahal.webp" alt="Hawa Mahal"
-                                class="destination_img" data-swiper-parallax="-20%">
+                            <img src="/frontend/assets/images/Destination/hawa_mahal.webp" alt="Hawa Mahal"
+                                class="destination_img" data-swiper-parallax="-20%" loading="lazy">
                             <div class="destination_content">
                                 <h4 class="destination_title">Hawa Mahal</h4>
                                 <p class="destination_location"><i class="ri-map-pin-line"></i> Jaipur</p>
@@ -112,7 +156,7 @@
                                     <i class="ri-shield-fill"></i> <span>History</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/mehrangarh.webp" alt="Mehrangarh"
+                            <img src="/frontend/assets/images/Destination/mehrangarh.webp" alt="Mehrangarh"
                                 class="destination_img" data-swiper-parallax="-20%">
                             <div class="destination_content">
                                 <h4 class="destination_title">Mehrangarh Fort</h4>
@@ -146,7 +190,7 @@
                                     <i class="ri-vip-crown-fill"></i> <span>Royal</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/city_palace.webp" alt="City Palace"
+                            <img src="/frontend/assets/images/Destination/city_palace.webp" alt="City Palace"
                                 class="destination_img" data-swiper-parallax="-20%">
                             <div class="destination_content">
                                 <h4 class="destination_title">City Palace</h4>
@@ -179,8 +223,8 @@
                                     <i class="ri-sun-fill"></i> <span>Desert</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/jaisalmer_fort.webp" alt="Jaisalmer Fort"
-                                class="destination_img" data-swiper-parallax="-20%">
+                            <img src="/frontend/assets/images/Destination/jaisalmer_fort.webp" alt="Jaisalmer Fort"
+                                class="destination_img" data-swiper-parallax="-20%" loading="lazy">
                             <div class="destination_content">
                                 <h4 class="destination_title">Jaisalmer Fort</h4>
                                 <p class="destination_location"><i class="ri-map-pin-line"></i> Jaisalmer</p>
@@ -213,8 +257,8 @@
                                     <i class="ri-camera-lens-fill"></i> <span>Wildlife</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/ranthambore.webp" alt="Ranthambore"
-                                class="destination_img" data-swiper-parallax="-20%">
+                            <img src="/frontend/assets/images/Destination/ranthambore.webp" alt="Ranthambore"
+                                class="destination_img" data-swiper-parallax="-20%" loading="lazy">
                             <div class="destination_content">
                                 <h4 class="destination_title">Ranthambore</h4>
                                 <p class="destination_location"><i class="ri-map-pin-line"></i> Sawai Madhopur</p>
@@ -246,8 +290,8 @@
                                     <i class="ri-ancient-gate-fill"></i> <span>Spiritual</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/pushkar.webp" alt="Pushkar" class="destination_img"
-                                data-swiper-parallax="-20%">
+                            <img src="/frontend/assets/images/Destination/pushkar.webp" alt="Pushkar"
+                                class="destination_img" data-swiper-parallax="-20%" loading="lazy">
                             <div class="destination_content">
                                 <h4 class="destination_title">Pushkar Lake</h4>
                                 <p class="destination_location"><i class="ri-map-pin-line"></i> Pushkar</p>
@@ -278,8 +322,8 @@
                                     <i class="ri-building-2-fill"></i> <span>Heritage</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/junagarh.webp" alt="Junagarh Fort"
-                                class="destination_img" data-swiper-parallax="-20%">
+                            <img src="/frontend/assets/images/Destination/junagarh.webp" alt="Junagarh Fort"
+                                class="destination_img" data-swiper-parallax="-20%" loading="lazy">
                             <div class="destination_content">
                                 <h4 class="destination_title">Junagarh Fort</h4>
                                 <p class="destination_location"><i class="ri-map-pin-line"></i> Bikaner</p>
@@ -312,8 +356,8 @@
                                     <i class="ri-sailboat-fill"></i> <span>Romantic</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/lake_pichola.webp" alt="Lake Pichola"
-                                class="destination_img" data-swiper-parallax="-20%">
+                            <img src="/frontend/assets/images/Destination/lake_pichola.webp" alt="Lake Pichola"
+                                class="destination_img" data-swiper-parallax="-20%" loading="lazy">
                             <div class="destination_content">
                                 <h4 class="destination_title">Lake Pichola</h4>
                                 <p class="destination_location"><i class="ri-map-pin-line"></i> Udaipur</p>
@@ -345,7 +389,7 @@
                                     <i class="ri-sword-fill"></i> <span>Legendary</span>
                                 </div>
                             </div>
-                            <img src="/assets/images/Destination/chittorgarh_fort.webp" alt="Chittorgarh Fort"
+                            <img src="/frontend/assets/images/Destination/chittorgarh_fort.webp" alt="Chittorgarh Fort"
                                 class="destination_img" data-swiper-parallax="-20%">
                             <div class="destination_content">
                                 <h4 class="destination_title">Chittorgarh Fort</h4>
@@ -389,7 +433,7 @@
                 <div class="city-group_cards-grid">
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/TheRoyalLakePalace.webp" alt="Luxury Palace Hotel"
+                            <img src="/frontend/assets/images/Hotel/TheRoyalLakePalace.webp" alt="Luxury Palace Hotel"
                                 class="hotel_img">
                             <div class="verified_badge"><i class="ri-shield-check-fill"></i> Best Seller</div>
                             <div class="hotel_price-badge">
@@ -415,7 +459,7 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/FatehGarhHeritage.webp" alt="Garden Heritage Hotel"
+                            <img src="/frontend/assets/images/Hotel/FatehGarhHeritage.webp" alt="Garden Heritage Hotel"
                                 class="hotel_img">
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
@@ -446,7 +490,7 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/JaisalmerMarriottResort&Spa.webp"
+                            <img src="/frontend/assets/images/Hotel/JaisalmerMarriottResort&Spa.webp"
                                 alt="Jaisalmer Marriott Resort & Spa" class="hotel_img">
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
@@ -474,7 +518,7 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/WelcomHeritageMandirPalace.webp"
+                            <img src="/frontend/assets/images/Hotel/WelcomHeritageMandirPalace.webp"
                                 alt="WelcomHeritage Mandir Palace" class="hotel_img">
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
@@ -508,7 +552,8 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/rambagh.webp" alt="Rambagh Palace" class="hotel_img">
+                            <img src="/frontend/assets/images/Hotel/rambagh.webp" alt="Rambagh Palace"
+                                class="hotel_img">
                             <div class="verified_badge"><i class="ri-vip-crown-fill"></i> Royal Stay</div>
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
@@ -535,7 +580,7 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/samode.webp" alt="Samode Haveli" class="hotel_img">
+                            <img src="/frontend/assets/images/Hotel/samode.webp" alt="Samode Haveli" class="hotel_img">
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
                                 <h5 class="hotel_price">₹18,500/Night</h5>
@@ -562,7 +607,8 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/pearl.webp" alt="Pearl Palace Heritage" class="hotel_img">
+                            <img src="/frontend/assets/images/Hotel/pearl.webp" alt="Pearl Palace Heritage"
+                                class="hotel_img">
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
                                 <h5 class="hotel_price">₹4,200/Night</h5>
@@ -596,7 +642,7 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/raas.webp" alt="RAAS Jodhpur" class="hotel_img">
+                            <img src="/frontend/assets/images/Hotel/raas.webp" alt="RAAS Jodhpur" class="hotel_img">
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
                                 <h5 class="hotel_price">₹16,500/Night</h5>
@@ -622,7 +668,7 @@
 
                     <div class="hotel_card">
                         <div class="hotel_image-wrapper">
-                            <img src="/assets/images/Hotel/pal.webp" alt="Pal Haveli" class="hotel_img">
+                            <img src="/frontend/assets/images/Hotel/pal.webp" alt="Pal Haveli" class="hotel_img">
                             <div class="hotel_price-badge">
                                 <span>Starts at</span>
                                 <h5 class="hotel_price">₹6,500/Night</h5>
@@ -671,7 +717,7 @@
                 <div class="card-container">
                     <div class="flip-card" id="card-1">
                         <div class="card-front">
-                            <img src="/assets/images/card_1.jpg" alt="Culture" />
+                            <img src="/frontend/assets/images/card_1.jpg" alt="Culture" />
                         </div>
                         <div class="card-back">
                             <h3>Authentic Experiences</h3>
@@ -682,7 +728,7 @@
 
                     <div class="flip-card" id="card-2">
                         <div class="card-front">
-                            <img src="/assets/images/card_2.jpg" alt="Culture" />
+                            <img src="/frontend/assets/images/card_2.jpg" alt="Culture" />
                         </div>
                         <div class="card-back">
                             <h3>24/7 Dedicated Support</h3>
@@ -693,7 +739,7 @@
 
                     <div class="flip-card" id="card-3">
                         <div class="card-front">
-                            <img src="/assets/images/card_3.jpg" alt="Culture" />
+                            <img src="/frontend/assets/images/card_3.jpg" alt="Culture" />
                         </div>
                         <div class="card-back">
                             <h3>Best Value Guarantee</h3>
@@ -782,7 +828,7 @@
             <div class="footer_col footer_col-brand">
 
                 <a href="#home" class="nav_logo footer_logo">
-                    <img src="/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
+                    <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
                     <div class="nav_logo-text">
                         Ghummakkad<br />
                         <h6>Book.Travel.Explore.</h6>
@@ -851,7 +897,13 @@
         </div>
 
         <div class="footer_bar">
-            <p>© 2025 Ghummakkad Yaatri. All rights reserved.</p>
+            <p>© <span id="copyright-year">2025</span> Ghummakkad Yaatri. All rights reserved.</p>
+            <div class="payment_icons">
+                <i class="ri-visa-line"></i>
+                <i class="ri-mastercard-line"></i>
+                <i class="ri-paypal-line"></i>
+                <i class="ri-bank-card-line"></i>
+            </div>
         </div>
     </footer>
 

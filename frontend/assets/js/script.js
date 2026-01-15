@@ -1,5 +1,37 @@
 ﻿// Header Logic
 document.addEventListener('DOMContentLoaded', function () {
+
+    // Page Transition
+    document.body.classList.add('loaded');
+
+    // Initialize Lenis for Super Smooth Scroll
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 2.0, // Longer duration for momentum
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential easing
+            smoothWheel: true,
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+    }
+
+    // Dynamic Year
+    const yearSpan = document.getElementById('copyright-year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+
     const menuBtn = document.getElementById('menu-btn');
     const navLinks = document.getElementById('nav-links');
 
@@ -49,11 +81,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const card3 = document.getElementById('card-3');
     const cards = [card1, card2, card3];
 
+    if (!stickySection) return; // Guard clause
+
     function isMobile() {
         return window.innerWidth <= 999;
     }
 
     function handleScroll() {
+        if (!stickySection) return;
         if (isMobile()) return;
 
         const rect = stickySection.getBoundingClientRect();
@@ -186,42 +221,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const enableLoop = slideCount >= 3;
 
-    const swiper = new Swiper('.cards_wrapper', {
-        loop: enableLoop,
-        grabCursor: true,
-        centeredSlides: true,
-        slidesPerView: 3,
-        spaceBetween: 30,
-        speed: 800,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-
-        ...(enableLoop && { loopedSlides: slideCount }),
-
-        on: {
-            slideChange: function () {
-                document.querySelectorAll('.destination_card.is-flipped').forEach(card => {
-                    card.classList.remove('is-flipped');
-                });
-            }
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-                spaceBetween: 20
+    if (typeof Swiper !== 'undefined' && document.querySelector('.cards_wrapper')) {
+        const swiper = new Swiper('.cards_wrapper', {
+            loop: enableLoop,
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 3,
+            spaceBetween: 30,
+            speed: 800,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
             },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 25
+
+            ...(enableLoop && { loopedSlides: slideCount }),
+
+            on: {
+                slideChange: function () {
+                    document.querySelectorAll('.destination_card.is-flipped').forEach(card => {
+                        card.classList.remove('is-flipped');
+                    });
+                }
             },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 25
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30
+                }
             }
-        }
-    });
+        });
+    }
 
     const cards = document.querySelectorAll('.destination_card');
 
@@ -323,12 +360,12 @@ document.addEventListener('DOMContentLoaded', () => {
 const HOTEL_DATA = {
     'udaipur': {
         name: 'Udaipur',
-        image: '/assets/images/Place/udaipur.jpg',
+        image: '/frontend/assets/images/Place/udaipur.jpg',
         hotels: [
             {
                 id: 'udaipur-1',
                 name: 'The Royal Lake Palace',
-                image: '/assets/images/Hotel/TheRoyalLakePalace.jpg',
+                image: '/frontend/assets/images/Hotel/TheRoyalLakePalace.webp',
                 price: 15500,
                 rating: 4.9,
                 location: 'Udaipur, Rajasthan',
@@ -337,7 +374,7 @@ const HOTEL_DATA = {
             {
                 id: 'udaipur-2',
                 name: 'Fateh Garh Heritage',
-                image: '/assets/images/Hotel/FatehGarhHeritage.jpg',
+                image: '/frontend/assets/images/Hotel/FatehGarhHeritage.webp',
                 price: 9800,
                 rating: 4.6,
                 location: 'Near City Palace, Udaipur',
@@ -346,7 +383,7 @@ const HOTEL_DATA = {
             {
                 id: 'udaipur-3',
                 name: 'Taj Lake Palace',
-                image: '/assets/images/Hotel/TajLakePalace.jpg',
+                image: '/frontend/assets/images/Hotel/TheRoyalLakePalace.webp',
                 price: 48000,
                 rating: 5.0,
                 location: 'Lake Pichola, Udaipur',
@@ -355,7 +392,7 @@ const HOTEL_DATA = {
             {
                 id: 'udaipur-4',
                 name: 'The Oberoi Udaivilas',
-                image: '/assets/images/Hotel/OberoiUdaivilas.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 52000,
                 rating: 5.0,
                 location: 'Haridasji Ki Magri, Udaipur',
@@ -365,12 +402,12 @@ const HOTEL_DATA = {
     },
     'jaisalmer': {
         name: 'Jaisalmer',
-        image: '/assets/images/Place/jaisalmer.jpg',
+        image: '/frontend/assets/images/Place/jaisalmer.jpg',
         hotels: [
             {
                 id: 'jaisalmer-1',
                 name: 'Jaisalmer Marriott Resort',
-                image: '/assets/images/Hotel/JaisalmerMarriottResort&Spa.jpg',
+                image: '/frontend/assets/images/Hotel/JaisalmerMarriottResort&Spa.webp',
                 price: 12200,
                 rating: 4.5,
                 location: 'Dhanana Rd, Jaisalmer',
@@ -379,7 +416,7 @@ const HOTEL_DATA = {
             {
                 id: 'jaisalmer-2',
                 name: 'Mandir Palace',
-                image: '/assets/images/Hotel/WelcomHeritageMandirPalace.jpeg',
+                image: '/frontend/assets/images/Hotel/WelcomHeritageMandirPalace.webp',
                 price: 8500,
                 rating: 4.5,
                 location: 'Gandhi Chowk Rd, Jaisalmer',
@@ -388,7 +425,7 @@ const HOTEL_DATA = {
             {
                 id: 'jaisalmer-3',
                 name: 'Suryagarh Jaisalmer',
-                image: '/assets/images/Hotel/Suryagarh.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 22000,
                 rating: 4.8,
                 location: 'Sam Road, Jaisalmer',
@@ -398,12 +435,12 @@ const HOTEL_DATA = {
     },
     'jaipur': {
         name: 'Jaipur',
-        image: '/assets/images/Place/jaipur.jpg',
+        image: '/frontend/assets/images/Place/jaipur.jpg',
         hotels: [
             {
                 id: 'jaipur-1',
                 name: 'Rambagh Palace',
-                image: '/assets/images/Hotel/rambagh.jpg',
+                image: '/frontend/assets/images/Hotel/rambagh.webp',
                 price: 45000,
                 rating: 4.9,
                 location: 'Jaipur, Rajasthan',
@@ -412,7 +449,7 @@ const HOTEL_DATA = {
             {
                 id: 'jaipur-2',
                 name: 'Samode Haveli',
-                image: '/assets/images/Hotel/samode.jpg',
+                image: '/frontend/assets/images/Hotel/samode.webp',
                 price: 18500,
                 rating: 4.7,
                 location: 'Old City, Jaipur',
@@ -421,7 +458,7 @@ const HOTEL_DATA = {
             {
                 id: 'jaipur-3',
                 name: 'ITC Rajputana',
-                image: '/assets/images/Hotel/ITC_Rajputana.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 10500,
                 rating: 4.6,
                 location: 'Palace Road, Jaipur',
@@ -431,12 +468,12 @@ const HOTEL_DATA = {
     },
     'jodhpur': {
         name: 'Jodhpur',
-        image: '/assets/images/Place/jodhpur.jpg',
+        image: '/frontend/assets/images/Place/jodhpur.jpg',
         hotels: [
             {
                 id: 'jodhpur-1',
                 name: 'RAAS Jodhpur',
-                image: '/assets/images/Hotel/raas.jpg',
+                image: '/frontend/assets/images/Hotel/raas.webp',
                 price: 16500,
                 rating: 4.8,
                 location: 'Toorji Ka Jhalra, Jodhpur',
@@ -445,7 +482,7 @@ const HOTEL_DATA = {
             {
                 id: 'jodhpur-2',
                 name: 'Pal Haveli',
-                image: '/assets/images/Hotel/pal.jpg',
+                image: '/frontend/assets/images/Hotel/pal.webp',
                 price: 6500,
                 rating: 4.6,
                 location: 'Near Clock Tower, Jodhpur',
@@ -454,7 +491,7 @@ const HOTEL_DATA = {
             {
                 id: 'jodhpur-3',
                 name: 'Umaid Bhawan Palace',
-                image: '/assets/images/Hotel/UmaidBhawan.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 65000,
                 rating: 5.0,
                 location: 'Circuit House Rd, Jodhpur',
@@ -464,12 +501,12 @@ const HOTEL_DATA = {
     },
     'bikaner': {
         name: 'Bikaner',
-        image: '/assets/images/Place/bikaner.jpg',
+        image: '/frontend/assets/images/Place/bikaner.jpg',
         hotels: [
             {
                 id: 'bikaner-1',
                 name: 'Narendra Bhawan',
-                image: '/assets/images/Hotel/NarendraBhawan.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 13500,
                 rating: 4.7,
                 location: 'Gandhi Colony, Bikaner',
@@ -478,7 +515,7 @@ const HOTEL_DATA = {
             {
                 id: 'bikaner-2',
                 name: 'Laxmi Niwas Palace',
-                image: '/assets/images/Hotel/LaxmiNiwas.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 11000,
                 rating: 4.6,
                 location: 'Lalgarh Palace Complex, Bikaner',
@@ -488,12 +525,12 @@ const HOTEL_DATA = {
     },
     'chittorgarh': {
         name: 'Chittorgarh',
-        image: '/assets/images/Place/chittorgarh.jpg',
+        image: '/frontend/assets/images/Place/chittorgarh.jpg',
         hotels: [
             {
                 id: 'chittorgarh-1',
                 name: 'Castle Bijaipur',
-                image: '/assets/images/Hotel/CastleBijaipur.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 6500,
                 rating: 4.4,
                 location: 'Bijaipur, Chittorgarh',
@@ -502,7 +539,7 @@ const HOTEL_DATA = {
             {
                 id: 'chittorgarh-2',
                 name: 'Bassi Fort Palace',
-                image: '/assets/images/Hotel/BassiFort.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 5800,
                 rating: 4.3,
                 location: 'Bassi, Chittorgarh',
@@ -512,12 +549,12 @@ const HOTEL_DATA = {
     },
     'pushkar': {
         name: 'Pushkar',
-        image: '/assets/images/Place/pushkar.jpg',
+        image: '/frontend/assets/images/Place/pushkar.jpg',
         hotels: [
             {
                 id: 'pushkar-1',
                 name: 'Ananta Spa & Resort',
-                image: '/assets/images/Hotel/AnantaResort.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 8500,
                 rating: 4.5,
                 location: 'Village Leela Sevri, Pushkar',
@@ -526,7 +563,7 @@ const HOTEL_DATA = {
             {
                 id: 'pushkar-2',
                 name: 'The Westin Pushkar Resort',
-                image: '/assets/images/Hotel/WestinPushkar.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 14500,
                 rating: 4.7,
                 location: 'Surajkund, Pushkar',
@@ -536,12 +573,12 @@ const HOTEL_DATA = {
     },
     'kota': {
         name: 'Kota',
-        image: '/assets/images/Place/kota.jpg',
+        image: '/frontend/assets/images/Place/kota.jpg',
         hotels: [
             {
                 id: 'kota-1',
                 name: 'Umed Bhawan Palace',
-                image: '/assets/images/Hotel/UmedBhawanKota.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 7500,
                 rating: 4.4,
                 location: 'Palace Road, Kota',
@@ -550,7 +587,7 @@ const HOTEL_DATA = {
             {
                 id: 'kota-2',
                 name: 'Country Inn & Suites',
-                image: '/assets/images/Hotel/CountryInnKota.jpg',
+                image: '/frontend/assets/images/Hotel/pearl.webp',
                 price: 5500,
                 rating: 4.3,
                 location: 'Rajeev Gandhi Nagar, Kota',
@@ -598,7 +635,7 @@ function renderCities() {
         card.className = 'city_select_card';
         card.onclick = () => selectCity(cityKey);
         card.innerHTML = `
-            <img src="${city.image}" alt="${city.name}">
+            <img src="${city.image}" alt="${city.name}" loading="lazy">
             <div class="city_select_overlay">
                 <h3>${city.name}</h3>
             </div>
@@ -632,7 +669,7 @@ function renderHotels(cityId) {
 
         card.innerHTML = `
             <div class="hotel_image-wrapper">
-                <img src="${hotel.image}" alt="${hotel.name}" class="hotel_img">
+                <img src="${hotel.image}" alt="${hotel.name}" class="hotel_img" loading="lazy">
                 <div class="hotel_price-badge">
                     <span>Starts at</span>
                     <h5 class="hotel_price">â‚¹${hotel.price.toLocaleString()}/Night</h5>

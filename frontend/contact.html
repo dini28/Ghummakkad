@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- favorite icon -->
-    <link rel="shortcut icon" href="/assets/images/logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="/frontend/assets/images/logo.svg" type="image/x-icon">
 
-    <link rel="icon" href="favicon.png" type="image/x-icon" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="/assets/css/contact.css" />
-    <link rel="stylesheet" href="/assets/css/style.css" />
-    <script src="/assets/js/script.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+    <link rel="stylesheet" href="/frontend/assets/css/common.css" />
+    <link rel="stylesheet" href="/frontend/assets/css/style.css" />
+    <link rel="stylesheet" href="/frontend/assets/css/contact.css" />
+    <script src="/frontend/assets/js/script.js"></script>
     <title>Ghummakkad | Contact Us</title>
 </head>
 
@@ -22,8 +23,8 @@
     <header class="header">
         <div class="nav">
 
-            <a href="/index.html" class="nav_logo">
-                <span class="nav_logo-icon">G</span>
+            <a href="/frontend/index.html" class="nav_logo">
+                <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
                 <span class="nav_logo-text">Ghummakkad<br />
                     <h6>Book.Travel.Explore.</h6>
                 </span>
@@ -34,11 +35,12 @@
             </button>
 
             <ul class="nav_links" id="nav-links">
-                <li class="nav_item"><a href="/index.html" class="nav_link">Home</a></li>
-                <li class="nav_item"><a href="/about.html" class="nav_link">About</a></li>
-                <li class="nav_item"><a href="/hotel.html" class="nav_link">Hotels</a></li>
-                <li class="nav_item"><a href="/contact.html" class="nav_link active">Contact</a></li>
-                <li class="nav_item" id="login-link"><a href="/login.html" class="nav_link nav_link-icon"><i
+                <li class="nav_item"><a href="/frontend/index.html" class="nav_link">Home</a></li>
+                <li class="nav_item"><a href="/frontend/about.html" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="/frontend/packages.html" class="nav_link">Packages</a></li>
+                <li class="nav_item"><a href="/frontend/hotel.html" class="nav_link">Hotels</a></li>
+                <li class="nav_item"><a href="/frontend/contact.html" class="nav_link active">Contact</a></li>
+                <li class="nav_item" id="login-link"><a href="/frontend/login.html" class="nav_link nav_link-icon"><i
                             class="ri-login-circle-line"></i>
                         Login</a></li>
             </ul>
@@ -47,7 +49,7 @@
     </header>
 
     <!-- Contact Hero Section -->
-    <section class="contact-hero" id="contact-hero">
+    <section class="hero hero_contact" id="contact-hero">
         <div class="section_container header_container">
             <p class="section_subheader hero_tagline">We're Here For You</p>
             <h1 class="hero_heading">
@@ -226,8 +228,8 @@
 
             <div class="footer_col footer_col-brand">
 
-                <a href="#home" class="nav_logo footer_logo">
-                    <span class="nav_logo-icon">G</span>
+                <a href="/frontend/index.html#home" class="nav_logo footer_logo">
+                    <img src="/frontend/assets/images/logo.svg" alt="Ghummakkad Logo" class="nav_logo-img">
                     <div class="nav_logo-text">
                         Ghummakkad<br />
                         <h6>Book.Travel.Explore.</h6>
@@ -295,7 +297,13 @@
         </div>
 
         <div class="footer_bar">
-            <p>© 2025 Ghummakkad Yaatri. All rights reserved.</p>
+            <p>© <span id="copyright-year">2025</span> Ghummakkad Yaatri. All rights reserved.</p>
+            <div class="payment_icons">
+                <i class="ri-visa-line"></i>
+                <i class="ri-mastercard-line"></i>
+                <i class="ri-paypal-line"></i>
+                <i class="ri-bank-card-line"></i>
+            </div>
         </div>
     </footer>
 

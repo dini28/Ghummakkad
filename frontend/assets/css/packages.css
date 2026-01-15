@@ -1,0 +1,226 @@
+/* Packages Hero Styles moved to common.css */
+
+/* Packages Grid */
+.packages_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.package_card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.package_image {
+    height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+.package_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.package_badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary-color);
+    color: var(--white);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.package_content {
+    padding: 1.5rem;
+}
+
+.package_meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 10px;
+}
+
+.package_meta i {
+    color: var(--primary-color);
+    margin-right: 5px;
+}
+
+.package_title {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    font-family: var(--header-font);
+    color: var(--text-dark);
+}
+
+.package_desc {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.package_price {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.price_label {
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.price_value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.price_value small {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+.package_btn {
+    width: 100%;
+}
+
+/* Modal & Timeline */
+.itinerary_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    transition: opacity 0.3s ease;
+}
+
+.itinerary_modal.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.itinerary_content {
+    background: var(--white);
+    width: 90%;
+    max-width: 600px;
+    max-height: 85vh;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    position: relative;
+    overflow-y: auto;
+    animation: slideUp 0.4s ease;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.close_itinerary {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-light);
+}
+
+.close_itinerary:hover {
+    color: var(--primary-color);
+}
+
+.timeline {
+    margin: 2rem 0;
+    border-left: 2px solid var(--primary-color-light);
+    padding-left: 1.5rem;
+}
+
+.timeline_item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline_item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline_day {
+    position: absolute;
+    left: -2.2rem;
+    top: 0;
+    background: var(--primary-color);
+    color: var(--white);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.timeline_info h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+.timeline_info p {
+    font-size: 0.95rem;
+    color: var(--text-light);
+}
+
+
+/* Responsive */
+@media (max-width: 992px) {
+    .packages_grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .packages_grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline {
+        padding-left: 1rem;
+    }
+
+    .timeline_day {
+        left: -1rem;
+        /* Adjust for mobile layout if needed */
+        position: relative;
+        display: inline-block;
+        margin-bottom: 5px;
+    }
+}
