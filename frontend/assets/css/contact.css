@@ -5,81 +5,19 @@
 /* --- HERO SECTION --- */
 /* Hero Section (Common style use karega) */
 
-/* --- Contact Info Cards Styling --- */
-.contact_info_container {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-}
+/* --- Contact Info Cards styling moved to common.css (Standardized) --- */
 
-.contact_cards_grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.contact_card {
-    background: var(--white);
-    padding: 2.5rem;
-    border-radius: var(--radius-lg);
-    text-align: center;
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
-    transition: var(--transition);
-}
-
-.contact_card:hover {
-    box-shadow: var(--shadow-xl);
-    border-color: var(--secondary-color);
-}
-
-.contact_icon_box {
-    width: 70px;
-    height: 70px;
-    margin: 0 auto 1.5rem;
-    background-color: rgba(15, 26, 44, 0.05);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
-    color: var(--primary-color);
-    transition: var(--transition);
-}
-
-.contact_card:hover .contact_icon_box {
-    background-color: var(--secondary-color);
-    color: var(--white);
-}
-
-.contact_card h4 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-.contact_card p {
-    color: var(--text-medium);
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-}
-
-.contact_link {
-    display: block;
-    font-size: 1.1rem;
-    color: var(--primary-color);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-    transition: var(--transition);
-}
-
-.contact_link:hover {
-    color: var(--secondary-color);
-}
-
-.sub_text {
-    font-size: 0.85rem;
-    color: var(--text-light);
+/* Map Overlay Mobile Responsive */
+@media (max-width: 576px) {
+    .map_overlay_card {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        bottom: 1rem;
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
 }
 
 /* --- Form aur Map ka Split Layout --- */

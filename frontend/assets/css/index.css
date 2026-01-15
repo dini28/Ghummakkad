@@ -171,8 +171,10 @@
 
 @media (max-width: 480px) {
     .destination_card {
-        width: 280px;
+        width: 100%;
+        max-width: 300px;
         height: 400px;
+        margin: 0 auto;
     }
 }
 

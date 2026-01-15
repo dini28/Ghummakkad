@@ -625,22 +625,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Cities ka grid render karna
-if (!grid) return;
+function renderCities() {
+    const grid = document.getElementById('city-grid');
+    if (!grid) return;
 
-grid.innerHTML = '';
-Object.keys(HOTEL_DATA).forEach(cityKey => {
-    const city = HOTEL_DATA[cityKey];
-    const card = document.createElement('div');
-    card.className = 'city_select_card';
-    card.onclick = () => selectCity(cityKey);
-    card.innerHTML = `
+    grid.innerHTML = '';
+    Object.keys(HOTEL_DATA).forEach(cityKey => {
+        const city = HOTEL_DATA[cityKey];
+        const card = document.createElement('div');
+        card.className = 'city_select_card';
+        card.onclick = () => selectCity(cityKey);
+        card.innerHTML = `
             <img src="${city.image}" alt="${city.name}" loading="lazy">
             <div class="city_select_overlay">
                 <h3>${city.name}</h3>
             </div>
         `;
-    grid.appendChild(card);
-});
+        grid.appendChild(card);
+    });
+}
 
 function selectCity(cityId) {
     currentBookingState.cityId = cityId;
@@ -650,26 +653,28 @@ function selectCity(cityId) {
 }
 
 // Hotels list render karna based on City
-if (!grid) return;
+function renderHotels(cityId) {
+    const grid = document.getElementById('hotel-grid');
+    if (!grid) return;
 
-grid.innerHTML = '';
-const hotels = HOTEL_DATA[cityId].hotels;
+    grid.innerHTML = '';
+    const hotels = HOTEL_DATA[cityId].hotels;
 
-hotels.forEach(hotel => {
-    const card = document.createElement('div');
-    card.className = 'hotel_card'; // Reusing style.css class
+    hotels.forEach(hotel => {
+        const card = document.createElement('div');
+        card.className = 'hotel_card'; // Reusing style.css class
 
-    // Generate amenities HTML
-    const amenitiesHtml = hotel.amenities.map(a =>
-        `<span class="amenity_item" title="${a}"><i class="ri-checkbox-circle-line"></i> ${a}</span>`
-    ).join('');
+        // Generate amenities HTML
+        const amenitiesHtml = hotel.amenities.map(a =>
+            `<span class="amenity_item" title="${a}"><i class="ri-checkbox-circle-line"></i> ${a}</span>`
+        ).join('');
 
-    card.innerHTML = `
+        card.innerHTML = `
             <div class="hotel_image-wrapper">
                 <img src="${hotel.image}" alt="${hotel.name}" class="hotel_img" loading="lazy">
                 <div class="hotel_price-badge">
                     <span>Starts at</span>
-                    <h5 class="hotel_price">â‚¹${hotel.price.toLocaleString()}/Night</h5>
+                    <h5 class="hotel_price">₹${hotel.price.toLocaleString()}/Night</h5>
                 </div>
             </div>
             <div class="hotel_content">
@@ -684,8 +689,9 @@ hotels.forEach(hotel => {
                 <button onclick="selectHotel('${hotel.id}')" class="btn hotel_btn" style="width:100%">Select Hotel</button>
             </div>
         `;
-    grid.appendChild(card);
-});
+        grid.appendChild(card);
+    });
+}
 
 function selectHotel(hotelId) {
     const city = HOTEL_DATA[currentBookingState.cityId];
