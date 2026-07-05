@@ -1,185 +1,183 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export default function Hero({
-    tagline = 'Padharo Mhare Desh!',
-    titlePrefix = (
-        <>
-            Experience Rajasthan&apos;s Royal Grandeur Through
-        </>
-    ),
-    phrases = [
-        'Curated Journeys',
-        'Heritage Palace Stays',
-        'Magical Desert Safaris',
-        'Deep Cultural Immersions',
-        'Exclusive Village Tours',
-        'Bespoke Royal Adventures'
-    ],
     backgroundImage = '/assets/images/hero.webp',
-    buttonText = 'Book Now',
-    buttonHref = '/packages'
+    featuredImage = '/assets/images/destinations/jaipur.webp'
 }) {
-    const [typedText, setTypedText] = useState('');
-    const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
-
-    useEffect(() => {
-        let timer;
-        const currentPhrase = phrases[currentPhraseIndex];
-
-        if (!isDeleting && typedText === currentPhrase) {
-            // Reached the end of typing, pause before deleting
-            timer = setTimeout(() => {
-                setIsDeleting(true);
-            }, 2000);
-        } else if (isDeleting && typedText === '') {
-            // Finished deleting, transition to next phrase immediately
-            setIsDeleting(false);
-            setCurrentPhraseIndex((prev) => (prev + 1) % phrases.length);
-        } else {
-            // Typing or deleting in progress
-            const speed = isDeleting ? 40 : 80;
-            timer = setTimeout(() => {
-                const nextText = isDeleting
-                    ? currentPhrase.substring(0, typedText.length - 1)
-                    : currentPhrase.substring(0, typedText.length + 1);
-                setTypedText(nextText);
-            }, speed);
+    // Animation variant matching motion rules and prefers-reduced-motion
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.1,
+            }
         }
+    };
 
-        return () => clearTimeout(timer);
-    }, [typedText, isDeleting, currentPhraseIndex, phrases]);
+    const itemVariants = {
+        hidden: { 
+            opacity: 0.2, 
+            y: 15 
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 100,
+                damping: 20
+            }
+        }
+    };
 
     return (
-        <section
-            id="home"
-            className="relative min-h-screen flex items-center bg-center bg-cover bg-no-repeat overflow-hidden"
-            style={{
-                backgroundImage: `url('${backgroundImage}')`,
-                backgroundAttachment: 'fixed'
-            }}
-        >
-            {/* Enhanced Multi-layer Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-transparent z-0"></div>
-            <div className="absolute inset-0 bg-gradient-to-t from-[#05090f] via-transparent to-black/20 z-0"></div>
+        <section id="home" className="relative bg-cream p-4 md:p-6 lg:p-8 min-h-screen flex flex-col justify-between">
+            {/* Outer Rounded Container */}
+            <div className="relative flex-grow rounded-[2rem] lg:rounded-[3rem] overflow-hidden bg-ink-2 flex flex-col lg:flex-row items-center justify-between p-8 md:p-16 lg:p-24 min-h-[80vh] lg:min-h-[85vh]">
+                
+                {/* Cinematic Background Image */}
+                <div className="absolute inset-0 z-0">
+                    <Image
+                        src={backgroundImage}
+                        alt="Cinematic majestic Rajasthan Palace at golden hour"
+                        fill
+                        priority
+                        quality={90}
+                        className="object-cover object-center"
+                    />
+                    {/* Guaranteed readable text scrim overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/45 to-black/35 z-10"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent z-10"></div>
+                </div>
 
-            {/* Decorative Light Element */}
-            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-[#f6ac0f]/8 blur-[120px] rounded-full pointer-events-none z-0"></div>
+                {/* Left Column (Content) */}
+                <div className="relative z-20 w-full lg:max-w-[600px] flex flex-col items-start text-left mb-12 lg:mb-0">
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        className="flex flex-col items-start"
+                    >
+                        {/* Subtitle */}
+                        <motion.span 
+                            variants={itemVariants} 
+                            className="text-gold font-mono text-xs md:text-sm font-semibold uppercase tracking-[0.2em] mb-4"
+                        >
+                            #1 Heritage travel partner in Rajasthan
+                        </motion.span>
 
-            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 py-32">
+                        {/* H1 Title with Sansation/Zalando */}
+                        <motion.h1 
+                            variants={itemVariants}
+                            className="text-[clamp(2.2rem,5vw,3.8rem)] font-playfair-display font-bold text-text-hi leading-tight tracking-tight mb-6 drop-shadow-lg"
+                        >
+                            Experience Rajasthan's Royal Grandeur
+                        </motion.h1>
 
-                {/* Social Proof Pill */}
-                <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 mb-8"
-                >
-                    <div className="flex items-center gap-0.5">
-                        {[...Array(5)].map((_, i) => (
-                            <i key={i} className="ri-star-fill text-[#f6ac0f] text-xs" />
-                        ))}
-                    </div>
-                    <span className="text-white/80 text-xs font-medium">
-                        Rated <span className="text-white font-bold">4.9/5</span> by 10,000+ travelers
-                    </span>
-                </motion.div>
+                        {/* Sub-paragraph description */}
+                        <motion.p 
+                            variants={itemVariants}
+                            className="text-text-mid font-inter text-base md:text-lg leading-relaxed mb-10 max-w-[540px] drop-shadow"
+                        >
+                            Discover palaces, desert safaris, royal cuisine, cultural trails, and handpicked stays crafted by local Rajasthan travel experts.
+                        </motion.p>
 
-                {/* Animated Tagline */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.3 }}
-                    className="font-cursive text-xl lg:text-3xl text-[#f6ac0f] mb-6 tracking-[3px]"
-                >
-                    {tagline}
-                </motion.p>
+                        {/* Inline links with arrows */}
+                        <motion.div 
+                            variants={itemVariants}
+                            className="flex flex-wrap items-center gap-8 font-mono text-xs uppercase tracking-widest font-bold"
+                        >
+                            <Link href="#packages" className="text-text-hi hover:text-gold transition-colors flex items-center gap-1.5 border-b border-white/20 pb-1">
+                                Plan My Trip <i className="ri-arrow-right-up-line text-sm"></i>
+                            </Link>
+                            <Link href="#experiences" className="text-text-hi hover:text-gold transition-colors flex items-center gap-1.5 border-b border-white/20 pb-1">
+                                Explore Experiences <i className="ri-arrow-right-up-line text-sm"></i>
+                            </Link>
+                        </motion.div>
+                    </motion.div>
+                </div>
 
-                {/* Dynamic Heading */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-5xl lg:text-7xl font-black text-white leading-tight mb-12 drop-shadow-2xl"
-                >
-                    {titlePrefix}
-                    <span className="block text-[#f6ac0f] drop-shadow-[0_0_15px_rgba(246,172,15,0.4)] mt-2">
-                        {typedText}
-                        <span className="inline-block w-[3px] h-[0.9em] bg-white ml-2 animate-pulse align-middle"></span>
-                    </span>
-                </motion.h1>
-
-                {/* Innovative CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.6 }}
-                    className="flex flex-wrap gap-5"
-                >
-                    <Link href={buttonHref}>
-                        <button className="px-10 py-5 bg-[#f6ac0f] text-slate-900 text-lg font-bold rounded-2xl shadow-[0_8px_30px_rgba(246,172,15,0.3)] hover:shadow-[0_12px_40px_rgba(246,172,15,0.5)] hover:-translate-y-1 transition-all duration-300">
-                            {buttonText}
-                        </button>
-                    </Link>
-
-                    <Link href="/about">
-                        <button className="px-10 py-5 bg-white/10 backdrop-blur-md text-white text-lg font-bold rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-300">
-                            Discover More
-                        </button>
-                    </Link>
-                </motion.div>
-            </div>
-
-            {/* Stats Overlay Bar — pinned to hero bottom */}
-            <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 1 }}
-                className="absolute bottom-0 left-0 right-0 z-20"
-            >
-                <div className="max-w-5xl mx-auto px-6 mb-6 lg:mb-10">
-                    <div className="hidden md:flex items-center justify-center gap-8 lg:gap-12 bg-white/10 backdrop-blur-xl rounded-2xl px-8 py-5 border border-white/10">
-                        {[
-                            { value: '12+', label: 'Cities' },
-                            { value: '500+', label: 'Tours' },
-                            { value: '10K+', label: 'Travelers' },
-                            { value: '4.9', label: 'Rating' },
-                        ].map((stat, i) => (
-                            <div key={i} className="flex items-center gap-3 shrink-0">
-                                <span className="text-[#f6ac0f] text-2xl lg:text-3xl font-black font-outfit">
-                                    {stat.value}
-                                </span>
-                                <span className="text-white/60 text-[11px] font-medium uppercase tracking-widest">
-                                    {stat.label}
-                                </span>
-                                {i < 3 && (
-                                    <div className="w-px h-8 bg-white/10 ml-4 lg:ml-6" />
-                                )}
+                {/* Right Column (Floating Card) */}
+                <div className="relative z-20 w-full lg:w-auto flex justify-center lg:justify-end pr-0 lg:pr-8">
+                    <motion.div
+                        initial={{ opacity: 0.2, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, type: 'spring' }}
+                        className="relative bg-white/5 backdrop-blur-md border border-white/10 p-4 rounded-3xl w-full max-w-[280px] hover:border-gold/30 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)] group"
+                    >
+                        {/* Image inside floating card */}
+                        <div className="relative h-[220px] rounded-2xl overflow-hidden mb-4">
+                            <Image
+                                src={featuredImage}
+                                alt="Jaipur City Palace heritage stay"
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                            />
+                        </div>
+                        
+                        {/* Card Content */}
+                        <div className="flex items-center justify-between px-1">
+                            <div>
+                                <span className="text-[10px] uppercase font-bold tracking-wider text-gold font-mono block mb-1">Featured Stays</span>
+                                <h3 className="text-white text-sm font-semibold font-playfair-display">Discover Our Royal Palaces</h3>
                             </div>
-                        ))}
+                            <Link href="#hotels" className="w-8 h-8 rounded-full bg-white/10 hover:bg-gold hover:text-ink flex items-center justify-center text-white transition-all">
+                                <i className="ri-arrow-right-up-line"></i>
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Bottom Right Cutout (Desktop only, absolute) */}
+                <div className="hidden lg:block absolute bottom-0 right-0 bg-cream pt-10 pl-14 z-30 w-[440px] rounded-tl-[3rem]">
+                    
+                    {/* Inverted Corner Top-Right */}
+                    <div className="inverted-corner-top"></div>
+                    {/* Inverted Corner Bottom-Left */}
+                    <div className="inverted-corner-left"></div>
+
+                    {/* Stats Layout inside Cutout */}
+                    <div className="grid grid-cols-3 gap-6 pr-6 pb-2">
+                        <div className="flex flex-col">
+                            <span className="text-gold text-2xl font-mono font-bold">10K+</span>
+                            <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Travelers</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-gold text-2xl font-mono font-bold">500+</span>
+                            <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Experiences</span>
+                        </div>
+                        <div className="flex flex-col">
+                            <span className="text-gold text-2xl font-mono font-bold">12+</span>
+                            <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Cities</span>
+                        </div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5 }}
-                className="absolute bottom-24 left-1/2 -translate-x-1/2 z-20 hidden lg:flex flex-col items-center gap-2"
-            >
-                <span className="text-white/30 text-[10px] font-bold uppercase tracking-[0.3em]">Scroll</span>
-                <motion.div
-                    animate={{ y: [0, 8, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                    <i className="ri-arrow-down-s-line text-white/30 text-xl" />
-                </motion.div>
-            </motion.div>
+            {/* Mobile Stats Panel (Displayed below hero image on small screens) */}
+            <div className="block lg:hidden mt-6 bg-cream-2 rounded-3xl p-6">
+                <div className="grid grid-cols-3 gap-4 text-center">
+                    <div className="flex flex-col">
+                        <span className="text-gold text-2xl font-mono font-bold">10K+</span>
+                        <span className="text-slate-500 text-[9px] uppercase font-bold tracking-wider font-mono mt-1">Travelers</span>
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="text-gold text-2xl font-mono font-bold">500+</span>
+                        <span className="text-slate-500 text-[9px] uppercase font-bold tracking-wider font-mono mt-1">Experiences</span>
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="text-gold text-2xl font-mono font-bold">12+</span>
+                        <span className="text-slate-500 text-[9px] uppercase font-bold tracking-wider font-mono mt-1">Cities</span>
+                    </div>
+                </div>
+            </div>
         </section>
     );
 }

@@ -61,20 +61,24 @@ const packages = [
 
 export default function PackagesPage() {
     return (
-        <div className="pt-20">
+        <div>
             {/* Hero Section */}
-            <div className="relative h-[40vh] w-full">
-                <Image
-                    src="/assets/images/rajasthan.webp"
-                    alt="Rajasthan Packages"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                    <h1 className="text-4xl md:text-6xl font-bold font-playfair-display text-white text-center">
-                        Curated Travel Packages
-                    </h1>
+            <div className="w-full bg-cream pt-24 pb-6 px-4 md:px-8">
+                <div className="relative h-[35vh] w-full rounded-[2.5rem] overflow-hidden flex items-center justify-center">
+                    <Image
+                        src="/assets/images/rajasthan.webp"
+                        alt="Rajasthan Packages"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-black/50 z-0" />
+                    <div className="relative z-10 text-center">
+                        <span className="text-gold font-mono text-xs font-bold uppercase tracking-widest block mb-3">— Our Offerings</span>
+                        <h1 className="text-4xl md:text-6xl font-bold font-playfair-display text-white uppercase text-center">
+                            Curated Travel Packages
+                        </h1>
+                    </div>
                 </div>
             </div>
 

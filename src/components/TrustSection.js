@@ -1,118 +1,100 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const trustItems = [
     {
-        icon: 'ri-government-fill',
-        title: 'Govt. Registered',
-        subtitle: 'Recognized Tour Operator',
+        icon: 'ri-map-pin-user-line',
+        title: 'Local Rajasthan Experts',
+        subLabel: 'Born & raised guides'
     },
     {
-        icon: 'ri-star-smile-fill',
-        title: '4.9/5 Rating',
-        subtitle: '10,000+ verified reviews',
-        hasCounter: true,
-        counterEnd: 10000,
-        counterSuffix: '+',
+        icon: 'ri-verified-badge-line',
+        title: 'Verified Hotels & Guides',
+        subLabel: '100% vetted properties'
     },
     {
-        icon: 'ri-group-fill',
-        title: '500+ Travelers',
-        subtitle: 'Happy customers this year',
-        hasCounter: true,
-        counterEnd: 500,
-        counterSuffix: '+',
+        icon: 'ri-user-star-line',
+        title: 'Custom Private Tours',
+        subLabel: 'Tailored to your pace'
     },
     {
-        icon: 'ri-secure-payment-fill',
-        title: '100% Secure',
-        subtitle: 'Encrypted payments',
+        icon: 'ri-price-tag-3-line',
+        title: 'Transparent Pricing',
+        subLabel: 'No hidden charges'
     },
     {
-        icon: 'ri-google-fill',
-        title: 'Google 4.9★',
-        subtitle: 'Top rated on Google',
-    },
+        icon: 'ri-customer-service-2-line',
+        title: '24/7 Travel Support',
+        subLabel: 'Always by your side'
+    }
 ];
 
-function AnimatedCounter({ end, suffix = '', duration = 2000 }) {
-    const [count, setCount] = useState(0);
-    const ref = useRef(null);
-    const hasAnimated = useRef(false);
+export default function TrustSection() {
+    // Stagger animation rules
+    const listVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.08
+            }
+        }
+    };
 
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting && !hasAnimated.current) {
-                    hasAnimated.current = true;
-                    const startTime = performance.now();
-                    const animate = (currentTime) => {
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
-                        // Ease out cubic
-                        const eased = 1 - Math.pow(1 - progress, 3);
-                        setCount(Math.floor(eased * end));
-                        if (progress < 1) {
-                            requestAnimationFrame(animate);
-                        }
-                    };
-                    requestAnimationFrame(animate);
-                }
-            },
-            { threshold: 0.3 }
-        );
-
-        if (ref.current) observer.observe(ref.current);
-        return () => observer.disconnect();
-    }, [end, duration]);
+    const cardVariants = {
+        hidden: { 
+            opacity: 0.2, 
+            y: 15 
+        },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: {
+                type: 'spring',
+                stiffness: 100,
+                damping: 20
+            }
+        }
+    };
 
     return (
-        <span ref={ref}>
-            {count.toLocaleString()}{suffix}
-        </span>
-    );
-}
-
-const TrustSection = () => {
-    return (
-        <section className="py-8 bg-slate-950 border-y border-white/5 relative overflow-hidden">
-            {/* Subtle gold ambient glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[200px] bg-[#f6ac0f]/5 blur-[100px] rounded-full pointer-events-none" />
-
-            <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
-                <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 lg:gap-8">
+        <section className="bg-ink relative z-20 pb-16">
+            <div className="max-w-[1200px] mx-auto px-[clamp(1rem,5vw,2rem)]">
+                <motion.ul 
+                    variants={listVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 list-none p-0 m-0"
+                >
                     {trustItems.map((item, index) => (
-                        <div
+                        <motion.li
                             key={index}
-                            className="flex items-center gap-3 px-5 py-3 rounded-2xl bg-white/[0.03] border border-white/[0.06] hover:border-[#f6ac0f]/30 transition-all duration-300 group cursor-default"
+                            variants={cardVariants}
+                            className="bg-ink-2 border border-line rounded-2xl p-6 flex flex-col items-center text-center transition-all duration-300 hover:border-gold/30 hover:shadow-[0_10px_30px_rgba(232,166,61,0.05)] hover:-translate-y-1 group"
                         >
-                            <div className="w-10 h-10 rounded-xl bg-[#f6ac0f]/10 flex items-center justify-center text-[#f6ac0f] text-xl group-hover:scale-110 group-hover:bg-[#f6ac0f]/20 transition-all duration-300">
+                            {/* Gold Icon Box */}
+                            <div 
+                                aria-hidden="true"
+                                className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold text-2xl mb-4 transition-transform duration-300 group-hover:scale-105"
+                            >
                                 <i className={item.icon}></i>
                             </div>
-                            <div>
-                                <h5 className="text-white font-bold text-sm font-outfit leading-tight">
-                                    {item.hasCounter ? (
-                                        <AnimatedCounter end={item.counterEnd} suffix={item.counterSuffix} />
-                                    ) : (
-                                        item.title
-                                    )}
-                                    {item.hasCounter && (
-                                        <span className="text-white/60 text-xs font-normal ml-1">
-                                            {item.title.includes('Rating') ? 'reviews' : 'travelers'}
-                                        </span>
-                                    )}
-                                </h5>
-                                {!item.hasCounter && (
-                                    <p className="text-slate-500 text-xs leading-tight">{item.subtitle}</p>
-                                )}
-                            </div>
-                        </div>
+
+                            {/* Title (Text-Hi) */}
+                            <h3 className="text-text-hi font-inter font-bold text-sm leading-snug mb-1">
+                                {item.title}
+                            </h3>
+
+                            {/* Sub-label (Text-Lo) */}
+                            <span className="text-text-lo font-inter text-xs leading-relaxed">
+                                {item.subLabel}
+                            </span>
+                        </motion.li>
                     ))}
-                </div>
+                </motion.ul>
             </div>
         </section>
     );
-};
-
-export default TrustSection;
+}

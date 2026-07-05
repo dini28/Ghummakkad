@@ -1,33 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Iceland&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --color-primary-gold: #f6ac0f;
-  --color-primary-dark: #d4940d;
-  --color-primary-light: #ffc94d;
-  --color-surface: #f8fafc;
-  --color-surface-elevated: #ffffff;
-  --color-surface-dark: #020617;
-  --color-surface-dark-elevated: #0f172a;
-  --color-accent-warm: #f97316;
+  --ink: #0B0C10;
+  --ink-2: #14161D;
+  --cream: #FBF6EC;
+  --cream-2: #F3ECDD;
+  --gold: #E8A63D;
+  --gold-600: #C6841F;
+  --text-hi: #FFFFFF;
+  --text-mid: #C9CDD6;
+  --text-lo: #8A909C;
+  --line: rgba(255, 255, 255, 0.08);
+
+  --background: var(--ink);
+  --foreground: var(--text-hi);
+  
+  --font-sans: 'Iceland', cursive;
+  --font-inter: 'Iceland', cursive;
+  --font-playfair-display: 'Zalando Sans SemiExpanded', sans-serif;
+  --font-cormorant-garamond: 'Zalando Sans SemiExpanded', sans-serif;
+  --font-cursive: 'Zalando Sans SemiExpanded', sans-serif;
+  --font-mono: 'DM Mono', monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--color-primary-gold);
-  --color-primary-dark: var(--color-primary-dark);
-  --color-primary-light: var(--color-primary-light);
-  --color-surface: var(--color-surface);
-  --color-surface-elevated: var(--color-surface-elevated);
-  --color-surface-dark: var(--color-surface-dark);
-  --color-surface-dark-elevated: var(--color-surface-dark-elevated);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-gold: var(--gold);
+  --color-gold-600: var(--gold-600);
+  --color-text-hi: var(--text-hi);
+  --color-text-mid: var(--text-mid);
+  --color-text-lo: var(--text-lo);
+  --color-line: var(--line);
+
+  --font-sans: var(--font-sans);
   --font-inter: var(--font-inter);
-  --font-outfit: var(--font-outfit);
-  --font-cursive: var(--font-nothing-you-could-do);
   --font-playfair-display: var(--font-playfair-display);
-  --font-syne-mono: var(--font-syne-mono);
+  --font-cormorant-garamond: var(--font-cormorant-garamond);
+  --font-mono: var(--font-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -152,4 +165,43 @@ body {
 #__next-vercel-toolbar,
 .vercel-toolbar {
   display: none !important;
+}
+
+/* Inverted rounded corners for Hero Cutout */
+.inverted-corner-top {
+  position: absolute;
+  right: 0;
+  top: -3rem;
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border-bottom-right-radius: 3rem;
+  box-shadow: 1.5rem 1.5rem 0 1.5rem var(--cream);
+  pointer-events: none;
+}
+
+.inverted-corner-left {
+  position: absolute;
+  left: -3rem;
+  bottom: 0;
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  border-bottom-right-radius: 3rem;
+  box-shadow: 1.5rem 1.5rem 0 1.5rem var(--cream);
+  pointer-events: none;
+}
+
+/* Premium shadows & overlays */
+.premium-card-shadow {
+  box-shadow: 0 15px 45px -10px rgba(11, 12, 16, 0.03), 0 5px 15px -5px rgba(11, 12, 16, 0.01);
+}
+
+.premium-card-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.premium-card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 50px -12px rgba(232, 166, 61, 0.08);
 }

@@ -31,21 +31,24 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="bg-slate-50 min-h-screen text-slate-800 font-sans pb-24 pt-20">
-            {/* Simple, Professional Hero Header */}
-            <div className="relative h-[35vh] w-full overflow-hidden">
-                <Image
-                    src="/assets/images/card_2.webp"
-                    alt="Contact Ghummakkad"
-                    fill
-                    className="object-cover"
-                    priority
-                />
-                <div className="absolute inset-0 bg-slate-900/60 flex flex-col items-center justify-center text-center px-6">
-                    <span className="text-[#f6ac0f] font-bold text-xs uppercase tracking-[4px] mb-3">Connect With Us</span>
-                    <h1 className="text-4xl md:text-5xl font-black font-playfair-display text-white">
-                        Get In Touch
-                    </h1>
+        <div className="bg-slate-50 min-h-screen text-slate-800 font-sans pb-24">
+            {/* Hero Section */}
+            <div className="w-full bg-cream pt-24 pb-6 px-4 md:px-8">
+                <div className="relative h-[35vh] w-full rounded-[2.5rem] overflow-hidden flex flex-col items-center justify-center text-center px-6">
+                    <Image
+                        src="/assets/images/card_2.webp"
+                        alt="Contact Ghummakkad"
+                        fill
+                        className="object-cover"
+                        priority
+                    />
+                    <div className="absolute inset-0 bg-slate-900/60 z-0" />
+                    <div className="relative z-10">
+                        <span className="text-gold font-mono text-xs font-bold uppercase tracking-widest block mb-3">— Connect With Us</span>
+                        <h1 className="text-4xl md:text-5xl font-bold font-playfair-display text-white uppercase leading-none">
+                            Get In Touch
+                        </h1>
+                    </div>
                 </div>
             </div>
 

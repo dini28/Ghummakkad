@@ -1,35 +1,25 @@
 import React from 'react';
 import Link from 'next/link';
 
-const Button = ({
+export default function Button({
     children,
-    variant = 'primary', // 'primary', 'outline', 'white'
-    size = 'md', // 'sm', 'md', 'lg'
+    variant = 'primary', // 'primary' | 'ghost' | 'dark'
     href,
     className = '',
     onClick,
     type = 'button',
+    disabled = false,
     ...props
-}) => {
-    // Base styles
-    const baseStyles = "inline-flex items-center justify-center font-bold tracking-wider rounded-lg transition-all duration-300 cursor-pointer";
+}) {
+    const baseStyles = "inline-flex items-center justify-center rounded-full font-mono text-sm font-semibold tracking-wider transition-all duration-300 min-h-[48px] px-8 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed";
 
-    // Variant styles
     const variants = {
-        primary: "bg-[#f6ac0f] text-slate-900 uppercase hover:bg-white hover:text-slate-900 border border-[#f6ac0f] hover:border-white",
-        outline: "bg-transparent text-slate-900 border-2 border-slate-900 hover:bg-slate-900 hover:text-white uppercase",
-        white: "bg-white text-slate-900 border border-white hover:bg-[#f6ac0f] hover:border-[#f6ac0f] hover:text-slate-900 uppercase",
-        ghost: "bg-transparent text-slate-600 hover:text-[#f6ac0f]"
+        primary: "bg-gold text-ink hover:bg-gold-600 active:scale-98 text-center",
+        ghost: "bg-transparent text-text-hi border border-white/20 hover:border-gold hover:text-gold active:scale-98 text-center",
+        dark: "bg-ink-2 text-text-hi border border-white/5 hover:border-white/20 active:scale-98 text-center"
     };
 
-    // Size styles
-    const sizes = {
-        sm: "px-4 py-2 text-xs",
-        md: "px-6 py-3 text-sm",
-        lg: "px-8 py-4 text-base w-full md:w-auto"
-    };
-
-    const combinedClasses = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
+    const combinedClasses = `${baseStyles} ${variants[variant]} ${className}`;
 
     if (href) {
         return (
@@ -44,11 +34,10 @@ const Button = ({
             type={type}
             className={combinedClasses}
             onClick={onClick}
+            disabled={disabled}
             {...props}
         >
             {children}
         </button>
     );
-};
-
-export default Button;
+}

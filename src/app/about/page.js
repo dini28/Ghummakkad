@@ -8,27 +8,29 @@ export default function AboutPage() {
     return (
         <div className="bg-[#05090f] min-h-screen text-slate-300">
             {/* Hero Section */}
-            <section className="relative h-[60vh] flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/assets/images/about_hero.png"
-                        alt="Royal Caravan in Desert"
-                        fill
-                        className="object-cover opacity-60"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-b from-[#05090f]/30 via-transparent to-[#05090f]" />
-                </div>
-                <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-                    <p className="text-[#f6ac0f] font-cursive text-xl md:text-2xl mb-4 tracking-widest">Our Journey</p>
-                    <h1 className="text-5xl md:text-7xl font-bold font-playfair-display text-white mb-6 leading-tight">
-                        Crafting Timeless <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f6ac0f] to-amber-600">Travel Stories</span>
-                    </h1>
-                    <p className="text-lg md:text-xl text-slate-200 max-w-2xl mx-auto font-light">
-                        We don&apos;t just show you Rajasthan; we invite you to live its legacy, breathe its history, and become part of its royal tale.
-                    </p>
-                </div>
-            </section>
+            <div className="w-full bg-cream pt-24 pb-6 px-4 md:px-8">
+                <section className="relative h-[45vh] md:h-[50vh] w-full rounded-[2.5rem] overflow-hidden flex items-center justify-center">
+                    <div className="absolute inset-0 z-0">
+                        <Image
+                            src="/assets/images/about_hero.png"
+                            alt="Royal Caravan in Desert"
+                            fill
+                            className="object-cover opacity-60"
+                            priority
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black/80" />
+                    </div>
+                    <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+                        <span className="text-gold font-mono text-xs font-bold uppercase tracking-widest block mb-4">— Our Journey</span>
+                        <h1 className="text-4xl md:text-6xl font-bold font-playfair-display text-white mb-4 leading-tight uppercase">
+                            Crafting Timeless Travel Stories
+                        </h1>
+                        <p className="text-sm md:text-base text-slate-200 max-w-2xl mx-auto font-light font-inter">
+                            We don&apos;t just show you Rajasthan; we invite you to live its legacy, breathe its history, and become part of its royal tale.
+                        </p>
+                    </div>
+                </section>
+            </div>
 
             {/* Our Story Section */}
             <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
