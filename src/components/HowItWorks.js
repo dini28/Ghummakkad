@@ -102,10 +102,10 @@ export default function HowItWorks() {
 
                                     {/* Step Info wrapper */}
                                     <div className="flex flex-col items-center">
-                                        <h3 className="text-xl font-playfair-display font-bold text-ink mb-3 transition-colors duration-300 group-hover:text-gold">
+                                        <h3 className="text-xl font-playfair-display font-bold text-ink mb-3 transition-colors duration-300 group-hover:text-gold-600">
                                             {step.title}
                                         </h3>
-                                        <p className="text-slate-500 font-inter text-xs md:text-sm leading-relaxed max-w-xs">
+                                        <p className="text-ink/75 font-inter text-xs md:text-sm leading-relaxed max-w-xs">
                                             {step.body}
                                         </p>
                                     </div>
@@ -121,7 +121,9 @@ export default function HowItWorks() {
                     <Button 
                         href="/contact" 
                         variant="dark"
-                        className="min-h-[48px] px-10"
+                        size="lg"
+                        icon="ri-calendar-check-line"
+                        iconPosition="left"
                     >
                         Start Planning
                     </Button>

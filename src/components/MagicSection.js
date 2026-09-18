@@ -118,7 +118,7 @@ export default function MagicSection() {
                                         </h3>
 
                                         {/* Card Body */}
-                                        <p className="text-slate-500 font-inter text-sm leading-relaxed mb-6 opacity-95">
+                                        <p className="text-ink/75 font-inter text-sm leading-relaxed mb-6 opacity-95">
                                             {card.body}
                                         </p>
                                     </div>

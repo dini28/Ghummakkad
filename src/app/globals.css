@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Iceland&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -16,12 +16,13 @@
   --background: var(--ink);
   --foreground: var(--text-hi);
   
-  --font-sans: 'Iceland', cursive;
-  --font-inter: 'Iceland', cursive;
-  --font-playfair-display: 'Zalando Sans SemiExpanded', sans-serif;
-  --font-cormorant-garamond: 'Zalando Sans SemiExpanded', sans-serif;
-  --font-cursive: 'Zalando Sans SemiExpanded', sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-inter: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-playfair-display: 'Playfair Display', Georgia, serif;
+  --font-cormorant-garamond: 'Cormorant Garamond', Georgia, serif;
+  --font-cursive: 'Playfair Display', Georgia, serif;
   --font-mono: 'DM Mono', monospace;
+  --font-outfit: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 @theme inline {
@@ -41,6 +42,7 @@
   --font-playfair-display: var(--font-playfair-display);
   --font-cormorant-garamond: var(--font-cormorant-garamond);
   --font-mono: var(--font-mono);
+  --font-outfit: var(--font-outfit);
 }
 
 @media (prefers-color-scheme: dark) {

@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import Button from './Button';
 
 export default function AuthModal({ isOpen, onClose }) {
     const [isLogin, setIsLogin] = useState(true);
@@ -18,26 +19,28 @@ export default function AuthModal({ isOpen, onClose }) {
             ></div>
 
             {/* Modal Container */}
-            <div className="relative w-full max-w-[450px] bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-100 animate-in fade-in zoom-in duration-300">
+            <div className="relative w-full max-w-[450px] bg-ink-2 rounded-3xl shadow-2xl overflow-hidden border border-line animate-in fade-in zoom-in duration-300">
 
                 {/* Top Accent Bar */}
-                <div className="h-2 bg-[#f6ac0f]"></div>
+                <div className="h-2 bg-gold"></div>
 
                 <div className="p-8 lg:p-10">
                     {/* Close Button */}
                     <button
+                        type="button"
                         onClick={onClose}
-                        className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors"
+                        className="absolute top-6 right-6 text-text-lo hover:text-gold transition-colors cursor-pointer"
+                        aria-label="Close auth dialog"
                     >
                         <i className="ri-close-line text-2xl"></i>
                     </button>
 
                     {/* Header */}
-                    <div className="mb-10 text-center">
-                        <h2 className="text-3xl font-bold text-slate-900 font-syne-mono mb-2">
+                    <div className="mb-8 text-center">
+                        <h2 className="text-2xl md:text-3xl font-bold text-white font-playfair-display mb-2">
                             {isLogin ? 'Welcome Back' : 'Create Account'}
                         </h2>
-                        <p className="text-slate-500 text-sm">
+                        <p className="text-text-lo text-xs font-sans">
                             {isLogin
                                 ? 'Glad to see you again! Please log in.'
                                 : 'Join the Ghummakkad community today.'
@@ -46,83 +49,89 @@ export default function AuthModal({ isOpen, onClose }) {
                     </div>
 
                     {/* Forms */}
-                    <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
+                    <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
                         {!isLogin && (
-                            <div className="space-y-2">
-                                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Full Name</label>
+                            <div className="space-y-1.5">
+                                <label className="text-[10px] font-bold uppercase font-mono tracking-wider text-text-lo ml-1">Full Name</label>
                                 <div className="relative">
-                                    <i className="ri-user-line absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                    <i className="ri-user-line absolute left-4 top-1/2 -translate-y-1/2 text-text-lo"></i>
                                     <input
                                         type="text"
                                         placeholder="Enter your name"
-                                        className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-[#f6ac0f] focus:ring-1 focus:ring-[#f6ac0f] transition-all"
+                                        className="w-full pl-12 pr-4 py-3 bg-ink border border-line rounded-xl focus:outline-none focus:border-gold text-xs text-text-hi font-sans transition-all"
                                     />
                                 </div>
                             </div>
                         )}
 
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Email Address</label>
+                        <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase font-mono tracking-wider text-text-lo ml-1">Email Address</label>
                             <div className="relative">
-                                <i className="ri-mail-line absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <i className="ri-mail-line absolute left-4 top-1/2 -translate-y-1/2 text-text-lo"></i>
                                 <input
                                     type="email"
                                     placeholder="name@example.com"
-                                    className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-[#f6ac0f] focus:ring-1 focus:ring-[#f6ac0f] transition-all"
+                                    className="w-full pl-12 pr-4 py-3 bg-ink border border-line rounded-xl focus:outline-none focus:border-gold text-xs text-text-hi font-sans transition-all"
                                 />
                             </div>
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Password</label>
+                        <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold uppercase font-mono tracking-wider text-text-lo ml-1">Password</label>
                             <div className="relative">
-                                <i className="ri-lock-line absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                                <i className="ri-lock-line absolute left-4 top-1/2 -translate-y-1/2 text-text-lo"></i>
                                 <input
                                     type="password"
                                     placeholder="••••••••"
-                                    className="w-full pl-12 pr-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:outline-none focus:border-[#f6ac0f] focus:ring-1 focus:ring-[#f6ac0f] transition-all"
+                                    className="w-full pl-12 pr-4 py-3 bg-ink border border-line rounded-xl focus:outline-none focus:border-gold text-xs text-text-hi font-sans transition-all"
                                 />
                             </div>
                         </div>
 
                         {isLogin && (
                             <div className="text-right">
-                                <button className="text-sm font-semibold text-[#f6ac0f] hover:underline">
+                                <button type="button" className="text-xs font-mono font-bold text-gold hover:underline">
                                     Forgot Password?
                                 </button>
                             </div>
                         )}
 
-                        <button className="w-full py-4 bg-[#f6ac0f] text-slate-900 font-bold rounded-2xl shadow-lg shadow-[#f6ac0f]/20 hover:shadow-xl hover:shadow-[#f6ac0f]/30 hover:-translate-y-0.5 transition-all duration-300">
+                        <Button
+                            type="submit"
+                            variant="primary"
+                            size="lg"
+                            fullWidth
+                        >
                             {isLogin ? 'Sign In Now' : 'Sign Up Free'}
-                        </button>
+                        </Button>
                     </form>
 
                     {/* Divider */}
                     <div className="my-8 flex items-center gap-4">
-                        <div className="h-[1px] flex-1 bg-slate-100"></div>
-                        <span className="text-xs font-bold text-slate-300 uppercase tracking-widest">Or Continue With</span>
-                        <div className="h-[1px] flex-1 bg-slate-100"></div>
+                        <div className="h-[1px] flex-1 bg-line"></div>
+                        <span className="text-[10px] font-bold font-mono text-text-lo uppercase tracking-widest">Or Continue With</span>
+                        <div className="h-[1px] flex-1 bg-line"></div>
                     </div>
 
                     {/* Social Logins */}
                     <div className="grid grid-cols-2 gap-4">
-                        <button className="flex items-center justify-center gap-2 py-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors font-semibold text-slate-600 text-sm">
-                            <i className="ri-google-fill text-xl text-red-500"></i>
+                        <button type="button" className="flex items-center justify-center gap-2 py-3 bg-ink border border-line rounded-xl hover:border-gold/50 transition-colors font-mono font-bold text-text-hi text-xs cursor-pointer">
+                            <i className="ri-google-fill text-lg text-red-500"></i>
                             Google
                         </button>
-                        <button className="flex items-center justify-center gap-2 py-3 border border-slate-100 rounded-xl hover:bg-slate-50 transition-colors font-semibold text-slate-600 text-sm">
-                            <i className="ri-facebook-box-fill text-xl text-blue-600"></i>
+                        <button type="button" className="flex items-center justify-center gap-2 py-3 bg-ink border border-line rounded-xl hover:border-gold/50 transition-colors font-mono font-bold text-text-hi text-xs cursor-pointer">
+                            <i className="ri-facebook-box-fill text-lg text-blue-500"></i>
                             Facebook
                         </button>
                     </div>
 
                     {/* Footer Toggle */}
-                    <p className="mt-10 text-center text-sm text-slate-500">
+                    <p className="mt-8 text-center text-xs text-text-lo font-sans">
                         {isLogin ? "Don't have an account?" : "Already have an account?"}{' '}
                         <button
+                            type="button"
                             onClick={toggleAuth}
-                            className="font-bold text-[#f6ac0f] hover:underline"
+                            className="font-bold text-gold hover:underline font-mono uppercase tracking-wider ml-1 cursor-pointer"
                         >
                             {isLogin ? 'Sign Up' : 'Log In'}
                         </button>

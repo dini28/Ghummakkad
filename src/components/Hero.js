@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import Button from './Button';
 
 export default function Hero({
     backgroundImage = '/assets/images/hero.webp',
@@ -88,17 +89,29 @@ export default function Hero({
                             Discover palaces, desert safaris, royal cuisine, cultural trails, and handpicked stays crafted by local Rajasthan travel experts.
                         </motion.p>
 
-                        {/* Inline links with arrows */}
+                        {/* Systematic Button Layout */}
                         <motion.div 
                             variants={itemVariants}
-                            className="flex flex-wrap items-center gap-8 font-mono text-xs uppercase tracking-widest font-bold"
+                            className="flex flex-wrap items-center gap-4 mt-2"
                         >
-                            <Link href="#packages" className="text-text-hi hover:text-gold transition-colors flex items-center gap-1.5 border-b border-white/20 pb-1">
-                                Plan My Trip <i className="ri-arrow-right-up-line text-sm"></i>
-                            </Link>
-                            <Link href="#experiences" className="text-text-hi hover:text-gold transition-colors flex items-center gap-1.5 border-b border-white/20 pb-1">
-                                Explore Experiences <i className="ri-arrow-right-up-line text-sm"></i>
-                            </Link>
+                            <Button 
+                                href="#packages" 
+                                variant="primary" 
+                                size="lg"
+                                icon="ri-compass-3-line"
+                                iconPosition="left"
+                            >
+                                Plan My Trip
+                            </Button>
+                            <Button 
+                                href="#experiences" 
+                                variant="ghost" 
+                                size="lg"
+                                icon="ri-arrow-right-up-line"
+                                iconPosition="right"
+                            >
+                                Explore Experiences
+                            </Button>
                         </motion.div>
                     </motion.div>
                 </div>
@@ -146,35 +159,35 @@ export default function Hero({
                     {/* Stats Layout inside Cutout */}
                     <div className="grid grid-cols-3 gap-6 pr-6 pb-2">
                         <div className="flex flex-col">
-                            <span className="text-gold text-2xl font-mono font-bold">10K+</span>
-                            <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Travelers</span>
+                            <span className="text-gold-600 text-2xl font-mono font-bold">10K+</span>
+                            <span className="text-ink/80 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Travelers</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-gold text-2xl font-mono font-bold">500+</span>
-                            <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Experiences</span>
+                            <span className="text-gold-600 text-2xl font-mono font-bold">500+</span>
+                            <span className="text-ink/80 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Experiences</span>
                         </div>
                         <div className="flex flex-col">
-                            <span className="text-gold text-2xl font-mono font-bold">12+</span>
-                            <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Cities</span>
+                            <span className="text-gold-600 text-2xl font-mono font-bold">12+</span>
+                            <span className="text-ink/80 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Cities</span>
                         </div>
                     </div>
                 </div>
             </div>
 
             {/* Mobile Stats Panel (Displayed below hero image on small screens) */}
-            <div className="block lg:hidden mt-6 bg-cream-2 rounded-3xl p-6">
+            <div className="block lg:hidden mt-6 bg-cream-2 rounded-3xl p-6 border border-ink/5">
                 <div className="grid grid-cols-3 gap-4 text-center">
                     <div className="flex flex-col">
-                        <span className="text-gold text-2xl font-mono font-bold">10K+</span>
-                        <span className="text-slate-500 text-[9px] uppercase font-bold tracking-wider font-mono mt-1">Travelers</span>
+                        <span className="text-gold-600 text-2xl font-mono font-bold">10K+</span>
+                        <span className="text-ink/80 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Travelers</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-gold text-2xl font-mono font-bold">500+</span>
-                        <span className="text-slate-500 text-[9px] uppercase font-bold tracking-wider font-mono mt-1">Experiences</span>
+                        <span className="text-gold-600 text-2xl font-mono font-bold">500+</span>
+                        <span className="text-ink/80 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Experiences</span>
                     </div>
                     <div className="flex flex-col">
-                        <span className="text-gold text-2xl font-mono font-bold">12+</span>
-                        <span className="text-slate-500 text-[9px] uppercase font-bold tracking-wider font-mono mt-1">Cities</span>
+                        <span className="text-gold-600 text-2xl font-mono font-bold">12+</span>
+                        <span className="text-ink/80 text-[10px] uppercase font-bold tracking-wider font-mono mt-1">Cities</span>
                     </div>
                 </div>
             </div>

@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import Button from "./Button";
 
 const CallToActionBanner = () => (
     <section className="relative py-24 overflow-hidden">
@@ -51,20 +52,26 @@ const CallToActionBanner = () => (
                     on heritage stays and curated experiences.
                 </p>
 
-                {/* CTA Buttons */}
+                {/* Systematic CTA Buttons Layout */}
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-                    <Link
+                    <Button
                         href="/packages"
-                        className="px-10 py-5 bg-[#f6ac0f] text-slate-900 font-bold text-sm uppercase tracking-widest rounded-2xl shadow-[0_8px_30px_rgba(246,172,15,0.3)] hover:shadow-[0_12px_40px_rgba(246,172,15,0.5)] hover:-translate-y-1 transition-all duration-300"
+                        variant="primary"
+                        size="lg"
+                        icon="ri-compass-3-line"
+                        iconPosition="left"
                     >
                         Explore Packages
-                    </Link>
-                    <Link
+                    </Button>
+                    <Button
                         href="/contact"
-                        className="px-10 py-5 bg-white/5 backdrop-blur-sm text-white font-bold text-sm uppercase tracking-widest rounded-2xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all duration-300"
+                        variant="ghost"
+                        size="lg"
+                        icon="ri-chat-3-line"
+                        iconPosition="left"
                     >
                         Talk to an Expert
-                    </Link>
+                    </Button>
                 </div>
 
                 {/* Social Proof Line */}

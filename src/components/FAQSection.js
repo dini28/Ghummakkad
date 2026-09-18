@@ -122,7 +122,7 @@ export default function FAQSection() {
                                     transition={{ duration: 0.3, ease: 'easeInOut' }}
                                     className="overflow-hidden"
                                 >
-                                    <div className="px-6 md:px-8 pb-6 pt-1 text-slate-500 font-inter text-xs md:text-sm leading-relaxed border-t border-cream-2/20">
+                                    <div className="px-6 md:px-8 pb-6 pt-1 text-ink/80 font-inter text-xs md:text-sm leading-relaxed border-t border-cream-2/20">
                                         {faq.answer}
                                     </div>
                                 </motion.div>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import Button from './Button';
+import AuthModal from './AuthModal';
 
 const navLinks = [
     { name: 'Home', href: '/' },
@@ -17,6 +18,7 @@ const navLinks = [
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isAuthOpen, setIsAuthOpen] = useState(false);
     const pathname = usePathname();
     const drawerRef = useRef(null);
     const triggerRef = useRef(null);
@@ -82,8 +84,8 @@ export default function Header() {
             <header
                 className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
                     scrolled 
-                        ? 'bg-ink/90 backdrop-blur-md border-b border-line shadow-[0_4px_30px_rgba(0,0,0,0.3)] py-3' 
-                        : 'bg-transparent border-b border-transparent py-5'
+                        ? 'bg-ink/95 backdrop-blur-md border-b border-line shadow-[0_4px_30px_rgba(0,0,0,0.5)] py-3' 
+                        : 'bg-ink/60 backdrop-blur-sm border-b border-white/5 py-4'
                 }`}
             >
                 <nav aria-label="Primary" className="max-w-[1200px] mx-auto px-[clamp(1rem,5vw,2rem)] flex items-center justify-between">
@@ -129,15 +131,16 @@ export default function Header() {
 
                     {/* Right side CTAs */}
                     <div className="hidden lg:flex items-center gap-6">
-                        <Link 
-                            href="#login" 
-                            className="text-xs font-bold uppercase tracking-widest text-text-mid hover:text-text-hi transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded py-1 px-2"
+                        <button 
+                            type="button"
+                            onClick={() => setIsAuthOpen(true)}
+                            className="text-xs font-bold uppercase tracking-widest text-text-mid hover:text-gold transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded py-1 px-2 cursor-pointer font-mono"
                         >
                             <i className="ri-user-3-line text-base"></i>
                             Login
-                        </Link>
+                        </button>
                         
-                        <Button href="#packages" variant="primary" className="min-h-[40px] px-6 text-xs">
+                        <Button href="#packages" variant="primary" size="sm">
                             Book Now
                         </Button>
                     </div>
@@ -216,14 +219,17 @@ export default function Header() {
 
                             {/* CTA Action Buttons at bottom of drawer */}
                             <div className="pt-8 border-t border-line space-y-4">
-                                <Link 
-                                    href="#login" 
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="flex items-center justify-center gap-2 w-full py-4 text-sm font-bold uppercase tracking-widest text-text-hi hover:text-gold transition-colors border border-white/10 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                                <button 
+                                    type="button" 
+                                    onClick={() => {
+                                        setIsMobileMenuOpen(false);
+                                        setIsAuthOpen(true);
+                                    }}
+                                    className="flex items-center justify-center gap-2 w-full py-4 text-sm font-bold uppercase tracking-widest text-text-hi hover:text-gold transition-colors border border-white/10 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold cursor-pointer font-mono"
                                 >
                                     <i className="ri-user-3-line text-lg"></i>
                                     Login
-                                </Link>
+                                </button>
 
                                 <Button 
                                     href="#packages" 
@@ -237,6 +243,9 @@ export default function Header() {
                     </>
                 )}
             </AnimatePresence>
+
+            {/* Authentication Modal */}
+            <AuthModal isOpen={isAuthOpen} onClose={() => setIsAuthOpen(false)} />
         </>
     );
 }

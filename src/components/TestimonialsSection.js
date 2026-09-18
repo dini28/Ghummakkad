@@ -164,7 +164,7 @@ export default function TestimonialsSection({
                                                 {item.name}
                                             </cite>
                                             <span className="text-text-lo text-[11px] font-inter block truncate">
-                                                {item.location} <span className="text-[#F5A400]/40 mx-1">·</span> <span className="text-gold font-semibold">{item.tripType}</span>
+                                                {item.location} <span className="text-gold/40 mx-1">·</span> <span className="text-gold font-semibold">{item.tripType}</span>
                                             </span>
                                         </div>
                                     </div>
@@ -217,7 +217,7 @@ export default function TestimonialsSection({
                                                 {testimonialsData[activeIndex].name}
                                             </cite>
                                             <span className="text-text-lo text-[11px] font-inter block truncate">
-                                                {testimonialsData[activeIndex].location} <span className="text-[#F5A400]/40 mx-1">·</span> <span className="text-gold font-semibold">{testimonialsData[activeIndex].tripType}</span>
+                                                {testimonialsData[activeIndex].location} <span className="text-gold/40 mx-1">·</span> <span className="text-gold font-semibold">{testimonialsData[activeIndex].tripType}</span>
                                             </span>
                                         </div>
                                     </div>

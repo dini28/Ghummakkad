@@ -155,21 +155,21 @@ export default function PackagesSection() {
                                 {/* Text Content below Image */}
                                 <div className="mt-4 px-1">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-[10px] text-gold font-bold uppercase tracking-wider font-mono">
+                                        <span className="text-[10px] text-gold-600 font-bold uppercase tracking-wider font-mono">
                                             {pkg.region}
                                         </span>
-                                        <span className="text-[11px] text-slate-500 font-medium font-mono flex items-center gap-1">
-                                            <i className="ri-star-fill text-[#F5A400]"></i> 4.9
+                                        <span className="text-[11px] text-ink/70 font-semibold font-mono flex items-center gap-1">
+                                            <i className="ri-star-fill text-gold-600"></i> 4.9
                                         </span>
                                     </div>
                                     
-                                    <h3 className="text-base md:text-lg font-playfair-display font-bold text-ink mt-1.5 leading-snug group-hover:text-gold transition-colors">
+                                    <h3 className="text-base md:text-lg font-playfair-display font-bold text-ink mt-1.5 leading-snug group-hover:text-gold-600 transition-colors">
                                         {pkg.title}
                                     </h3>
 
                                     {/* Pricing Line */}
-                                    <p className="text-xs text-slate-600 font-inter mt-1.5">
-                                        <span className="font-mono font-bold text-gold text-sm">{pkg.price}</span> / person · customizable
+                                    <p className="text-xs text-ink/75 font-inter mt-1.5">
+                                        <span className="font-mono font-bold text-gold-600 text-sm">{pkg.price}</span> / person · customizable
                                     </p>
                                 </div>
                             </Link>
@@ -181,8 +181,10 @@ export default function PackagesSection() {
                 <div className="text-center mt-12">
                     <Button 
                         href="/contact" 
-                        variant="ghost" 
-                        className="min-h-[48px] text-ink hover:text-gold border border-ink/10 hover:border-gold"
+                        variant="dark"
+                        size="md"
+                        icon="ri-edit-line"
+                        iconPosition="left"
                     >
                         Request a Custom Package
                     </Button>

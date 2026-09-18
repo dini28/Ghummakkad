@@ -5,11 +5,11 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata = {
-  title: "Ghummakkad — Premium Rajasthan Travel & Heritage Stays",
+  title: "Ghummakkad | Authentic Rajasthan Travel & Heritage Stays",
   description: "Experience Rajasthan's authentic heritage. Handpicked palace stays, curated desert safaris, and rich cultural tours across the royal state. Padharo Mhare Desh — Book your royal journey today.",
   keywords: "Rajasthan travel, heritage stays, desert safari, Jaipur tours, Udaipur hotels, Jaisalmer, cultural tours, India travel",
   openGraph: {
-    title: "Ghummakkad — Premium Rajasthan Travel & Heritage Stays",
+    title: "Ghummakkad | Authentic Rajasthan Travel & Heritage Stays",
     description: "Curated heritage stays, desert safaris, and cultural tours across the royal state of Rajasthan.",
     type: "website",
   },

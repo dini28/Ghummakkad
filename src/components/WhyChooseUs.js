@@ -83,14 +83,14 @@ export default function WhyChooseUs() {
                             Why Choose Ghummakkad?
                         </h2>
                         
-                        <p className="text-slate-600 font-inter text-base md:text-lg leading-relaxed mb-8 max-w-[420px]">
+                        <p className="text-ink/80 font-inter text-base md:text-lg leading-relaxed mb-8 max-w-[420px]">
                             We don't just sell travel packages — we design authentic, high-quality, private local experiences tailored to your dreams.
                         </p>
 
                         {/* Extra Visual Indicator */}
                         <div className="border-l-2 border-gold/40 pl-6 py-2 mt-2">
-                            <span className="text-xs uppercase font-bold tracking-widest font-mono text-gold block mb-1">Guaranteed Satisfaction</span>
-                            <p className="text-xs text-slate-500 font-inter leading-relaxed max-w-[320px]">
+                            <span className="text-xs uppercase font-bold tracking-widest font-mono text-gold-600 block mb-1">Guaranteed Satisfaction</span>
+                            <p className="text-xs text-ink/70 font-inter leading-relaxed max-w-[320px]">
                                 We coordinate every single detail so you can focus entirely on enjoying your journey.
                             </p>
                         </div>
@@ -111,21 +111,21 @@ export default function WhyChooseUs() {
                                     variants={cardVariants}
                                     className="flex w-full"
                                 >
-                                    <article className="flex gap-5 md:gap-6 p-6 md:p-8 rounded-[1.5rem] bg-white/40 border border-cream-2/40 hover:bg-white hover:shadow-[0_15px_40px_rgba(232,166,61,0.05)] hover:-translate-y-0.5 transition-all duration-300 flex-grow group">
+                                    <article className="flex gap-5 md:gap-6 p-6 md:p-8 rounded-[1.5rem] bg-white/60 border border-cream-2/60 hover:bg-white hover:shadow-[0_15px_40px_rgba(232,166,61,0.08)] hover:-translate-y-0.5 transition-all duration-300 flex-grow group">
                                         {/* Icon container */}
                                         <div
                                             aria-hidden="true"
-                                            className="w-12 h-12 rounded-xl bg-gold/5 border border-gold/10 flex items-center justify-center text-gold text-xl shrink-0 group-hover:bg-gold group-hover:text-ink group-hover:scale-105 group-hover:border-gold transition-all duration-300"
+                                            className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/20 flex items-center justify-center text-gold text-xl shrink-0 group-hover:bg-gold group-hover:text-ink group-hover:scale-105 group-hover:border-gold transition-all duration-300"
                                         >
                                             <i className={item.icon}></i>
                                         </div>
 
                                         {/* Text content */}
                                         <div className="flex flex-col items-start text-left">
-                                            <h3 className="text-lg font-playfair-display font-bold text-ink mb-2 group-hover:text-gold transition-colors duration-300">
+                                            <h3 className="text-lg font-playfair-display font-bold text-ink mb-2 group-hover:text-gold-600 transition-colors duration-300">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-slate-500 font-inter text-xs md:text-sm leading-relaxed">
+                                            <p className="text-ink/75 font-inter text-xs md:text-sm leading-relaxed">
                                                 {item.body}
                                             </p>
                                         </div>

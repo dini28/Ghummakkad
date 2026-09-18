@@ -16,7 +16,7 @@ export default function SectionHeading({
     };
 
     const titleColors = theme === 'light' ? 'text-ink' : 'text-text-hi';
-    const subtitleColors = theme === 'light' ? 'text-slate-600' : 'text-text-mid';
+    const subtitleColors = theme === 'light' ? 'text-ink/75' : 'text-text-mid';
 
     return (
         <div className={`flex flex-col max-w-3xl mb-12 ${alignClasses[align]} ${className}`}>

@@ -84,7 +84,7 @@ export default function FinalCTA() {
                         Tell us your dream Rajasthan experience and our local experts will craft a personalized itinerary for you.
                     </motion.p>
 
-                    {/* Action CTAs */}
+                    {/* Action CTAs: Systematic Button Layout */}
                     <motion.div 
                         variants={itemVariants}
                         className="flex flex-wrap items-center justify-center gap-4 mb-8 w-full sm:w-auto"
@@ -92,21 +92,26 @@ export default function FinalCTA() {
                         <Button 
                             href="/contact" 
                             variant="primary"
-                            className="w-full sm:w-auto text-center min-h-[48px]"
+                            size="lg"
+                            icon="ri-compass-3-line"
+                            iconPosition="left"
+                            className="w-full sm:w-auto"
                         >
                             Plan My Trip
                         </Button>
                         
-                        <a 
+                        <Button
                             href={waUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Talk to an expert on WhatsApp"
-                            className="inline-flex items-center justify-center rounded-full font-inter text-sm font-semibold tracking-wider transition-all duration-300 min-h-[48px] px-8 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-ink bg-transparent text-text-hi border border-white/20 hover:border-gold hover:text-gold active:scale-98 text-center w-full sm:w-auto"
+                            variant="ghost"
+                            size="lg"
+                            icon="ri-whatsapp-line text-green-400"
+                            iconPosition="left"
+                            className="w-full sm:w-auto"
                         >
-                            <i className="ri-whatsapp-line text-lg text-green-400 mr-2" aria-hidden="true"></i>
-                            <span>Talk to an Expert</span>
-                        </a>
+                            Talk to an Expert
+                        </Button>
                     </motion.div>
 
                     {/* Reassurance text */}
